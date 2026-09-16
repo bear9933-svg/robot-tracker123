@@ -551,8 +551,13 @@ footer.site-footer{
 
 <script>
 (function(){
-  var PW_HASH = "ee01f147ce42cef694b7a89ba8a8b46c7dca65a3d3bb708ed1200ffbb15e35e8";
+  var PW_HASH_DEFAULT = "ee01f147ce42cef694b7a89ba8a8b46c7dca65a3d3bb708ed1200ffbb15e35e8";
   var UNLOCK_KEY = "bwr-unlocked";
+  var PW_OVERRIDE_KEY = "bwr-pw-hash-override";
+
+  function currentHash(){
+    return localStorage.getItem(PW_OVERRIDE_KEY) || PW_HASH_DEFAULT;
+  }
 
   function sha256Hex(text){
     var enc = new TextEncoder().encode(text);
@@ -573,7 +578,7 @@ footer.site-footer{
   function tryPassword(){
     var val = document.getElementById("pwInput").value;
     sha256Hex(val).then(function(hash){
-      if(hash === PW_HASH){
+      if(hash === currentHash()){
         sessionStorage.setItem(UNLOCK_KEY, "1");
         unlock();
       }else{
@@ -585,6 +590,38 @@ footer.site-footer{
   document.getElementById("pwSubmit").addEventListener("click", tryPassword);
   document.getElementById("pwInput").addEventListener("keydown", function(e){
     if(e.key === "Enter") tryPassword();
+  });
+
+  function changePassword(){
+    var oldPw = prompt("請輸入目前的密碼：");
+    if(oldPw === null) return;
+    sha256Hex(oldPw).then(function(oldHash){
+      if(oldHash !== currentHash()){
+        alert("目前密碼輸入錯誤，未變更。");
+        return;
+      }
+      var newPw = prompt("請輸入新密碼：");
+      if(newPw === null) return;
+      if(!newPw){
+        alert("密碼不能是空白，未變更。");
+        return;
+      }
+      var confirmPw = prompt("請再輸入一次新密碼確認：");
+      if(confirmPw === null) return;
+      if(newPw !== confirmPw){
+        alert("兩次輸入的新密碼不一致，未變更。");
+        return;
+      }
+      sha256Hex(newPw).then(function(newHash){
+        localStorage.setItem(PW_OVERRIDE_KEY, newHash);
+        alert("密碼已更新！提醒：這組新密碼只在這個瀏覽器生效，換電腦或別的瀏覽器打開，還是要用原本的密碼。");
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    var btn = document.getElementById("changePwBtn");
+    if(btn) btn.addEventListener("click", changePassword);
   });
 })();
 </script>
@@ -607,6 +644,9 @@ footer.site-footer{
       <button id="exportBtn" class="backup-btn">📤 匯出備份</button>
       <button id="importBtn" class="backup-btn">📥 匯入備份</button>
       <input id="importFile" type="file" accept=".json" style="display:none">
+    </div>
+    <div class="backup-bar">
+      <button id="changePwBtn" class="backup-btn">🔑 更改密碼</button>
     </div>
     <nav id="navTree"></nav>
   </aside>
