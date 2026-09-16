@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>乙木命盤全解 — 男方八字分析</title>
+<style>
+:root {
+  --ink: #141B27;
+  --ink-light: #374357;
+  --ink-faint: #697A90;
+  --paper: #F4F7FC;
+  --paper-warm: #FFFFFF;
+  --paper-mid: #EBF0F9;
+  --gold: #b8860b;
+  --gold-light: #d4a820;
+  --jade: #2d6a4f;
+  --jade-light: #52b788;
+  --jade-pale: #d8f3dc;
+  --cinnabar: #8b1a1a;
+  --cinnabar-light: #c0392b;
+  --cinnabar-pale: #fde8e8;
+  --water: #1a3a5c;
+  --water-light: #2e6da4;
+  --water-pale: #e3eef9;
+  --amber: #7a4f00;
+  --amber-light: #e69c00;
+  --amber-pale: #fff3cd;
+  --rule: #DFE6F2;
+  --accent: #0FA895;
+  --accent-bright: #17D9BE;
+  --accent-ink: #FFFFFF;
+  --bg: var(--paper);
+  --panel: var(--paper-warm);
+  --border: var(--rule);
+  --text: var(--ink);
+  --text-mute: var(--ink-faint);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  background: var(--ink);
+  z-index: 100;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+}
+nav a {
+  color: #c8c0b0;
+  text-decoration: none;
+  padding: 12px 18px;
+  font-size: 12px;
+  letter-spacing: .5px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+nav a:hover { color: var(--gold-light); border-color: var(--gold-light); }
+
+/* HERO */
+.hero {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 64px 40px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '乙';
+  position: absolute;
+  right: -20px;
+  top: -40px;
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;
+  font-size: 280px;
+  color: rgba(255,255,255,.04);
+  line-height: 1;
+  pointer-events: none;
+}
+.hero-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--gold-light);
+  margin-bottom: 16px;
+}
+.hero-title {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.hero-sub {
+  color: #a0988a;
+  font-size: 14px;
+  max-width: 520px;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+.hero-meta-item { }
+.hero-meta-item .label { font-size: 10px; color: #706860; letter-spacing: 1px; margin-bottom: 4px; }
+.hero-meta-item .value { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif; font-size: 20px; color: var(--paper); }
+
+/* FOUR PILLARS */
+.pillars-section {
+  background: var(--paper-warm);
+  padding: 56px 40px;
+  border-bottom: 1px solid var(--rule);
+}
+.section-title {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--ink-faint);
+  margin-bottom: 32px;
+}
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 640px;
+}
+.pillar {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.pillar-header {
+  font-size: 10px;
+  color: var(--ink-faint);
+  padding: 8px 14px 6px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-warm);
+}
+.pillar-tg {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  padding: 16px 0 4px;
+  line-height: 1;
+}
+.pillar-dz {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  text-align: center;
+  padding: 4px 0 12px;
+  line-height: 1;
+}
+.pillar-info {
+  font-size: 11px;
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 8px 8px 14px;
+  line-height: 1.6;
+}
+.pillar.rizhu { border-color: var(--jade); }
+.pillar.rizhu .pillar-header { background: var(--jade-pale); color: var(--jade); }
+.pillar.rizhu .pillar-tg { color: var(--jade); }
+
+.c-water { color: var(--water); }
+.c-wood { color: var(--jade); }
+.c-fire { color: var(--cinnabar); }
+.c-earth { color: var(--amber); }
+.c-metal { color: var(--ink-light); }
+
+/* WUXING BAR */
+.wuxing-bars {
+  margin-top: 36px;
+  max-width: 480px;
+}
+.wx-row {
+  display: grid;
+  grid-template-columns: 56px 1fr 48px;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.wx-label { font-size: 12px; color: var(--ink-light); }
+.wx-bar-wrap { height: 6px; background: var(--paper-mid); border-radius: 3px; overflow: hidden; }
+.wx-bar { height: 6px; border-radius: 3px; }
+.wx-note { font-size: 11px; color: var(--ink-faint); }
+
+/* SECTION */
+section {
+  padding: 56px 40px;
+  border-bottom: 1px solid var(--rule);
+  max-width: 900px;
+  margin: 0 auto;
+}
+section:last-child { border-bottom: none; }
+
+h2 {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* DAYUN TABLE */
+.dayun-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.dayun-table th {
+  font-size: 10px;
+  color: var(--ink-faint);
+  font-weight: 400;
+  letter-spacing: .5px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  white-space: nowrap;
+}
+.dayun-table td {
+  padding: 12px 12px;
+  border-bottom: 1px solid var(--paper-mid);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.dayun-table tr:last-child td { border-bottom: none; }
+.dayun-table tr.current { background: rgba(45,106,79,.06); }
+.dayun-table tr.peak { background: rgba(184,134,11,.06); }
+
+.gz-big {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-top: 4px;
+}
+.tag-ji { background: var(--jade-pale); color: var(--jade); }
+.tag-daji { background: var(--jade); color: #fff; }
+.tag-ping { background: var(--paper-mid); color: var(--ink-faint); }
+.tag-ji2 { background: var(--amber-pale); color: var(--amber); }
+.tag-xiongji { background: var(--cinnabar-pale); color: var(--cinnabar); }
+.tag-now { background: var(--water-pale); color: var(--water); }
+.tag-peak { background: #fffbe6; color: #7a6000; border: 1px solid #e6c800; }
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+.card {
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 20px 22px;
+}
+.card-title {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.card-body {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.75;
+}
+
+/* PRIORITY TABLE */
+.priority-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 8px;
+}
+.priority-table th {
+  font-size: 10px;
+  color: var(--ink-faint);
+  font-weight: 400;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+}
+.priority-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--paper-mid);
+  line-height: 1.6;
+  font-size: 13px;
+}
+.priority-table tr:last-child td { border-bottom: none; }
+.rank {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;
+  font-size: 22px;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* WEALTH CHART */
+.wealth-chart {
+  margin: 24px 0 8px;
+  position: relative;
+}
+.wc-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 120px;
+}
+.wc-bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.wc-bar {
+  width: 100%;
+  border-radius: 2px 2px 0 0;
+  transition: opacity .2s;
+  position: relative;
+}
+.wc-bar:hover { opacity: .8; }
+.wc-age { font-size: 10px; color: var(--ink-faint); text-align: center; margin-top: 4px; }
+.wc-label { font-size: 10px; color: var(--ink-faint); text-align: center; }
+.wc-axis { border-top: 1px solid var(--rule); margin-top: 0; }
+
+/* INVESTMENT TABLE */
+.inv-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+.inv-table th { font-size: 10px; color: var(--ink-faint); font-weight: 400; padding: 8px 12px; border-bottom: 1px solid var(--rule); text-align: left; }
+.inv-table td { padding: 11px 12px; border-bottom: 1px solid var(--paper-mid); line-height: 1.6; }
+.inv-table tr:last-child td { border-bottom: none; }
+
+/* SUMMARY BOX */
+.summary-box {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 8px;
+  padding: 32px 36px;
+  margin-top: 40px;
+}
+.summary-box h3 {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--gold-light);
+  margin-bottom: 16px;
+}
+.summary-box p {
+  font-size: 13px;
+  color: #a0988a;
+  line-height: 1.9;
+  margin-bottom: 12px;
+}
+.summary-box p:last-child { margin-bottom: 0; }
+
+/* NEGOTIATION */
+.nego-step {
+  border-left: 2px solid var(--rule);
+  padding-left: 20px;
+  margin-bottom: 28px;
+  position: relative;
+}
+.nego-step::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.nego-step .step-label {
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.nego-step .step-say {
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ink);
+  font-style: italic;
+}
+.nego-step .step-note {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+/* INFO ROW */
+.info-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.info-item {
+  flex: 1;
+  min-width: 160px;
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+.info-item .il { font-size: 10px; color: var(--ink-faint); margin-bottom: 4px; }
+.info-item .iv { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif; font-size: 18px; color: var(--ink); }
+.info-item .is { font-size: 12px; color: var(--ink-faint); margin-top: 2px; }
+
+/* QUOTE */
+blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 12px 20px;
+  margin: 24px 0;
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;
+  font-size: 16px;
+  color: var(--ink-light);
+  line-height: 1.8;
+  background: var(--paper-warm);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .hero, section, .pillars-section { padding: 36px 20px; }
+  .pillars { grid-template-columns: repeat(2, 1fr); }
+  .hero::before { display: none; }
+  nav a { padding: 10px 12px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<div id="pwGate" style="position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang TC','Microsoft JhengHei',sans-serif;">
+  <div style="background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:32px 28px;width:min(320px,86vw);text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.08);">
+    <div style="font-size:28px;margin-bottom:10px;">🔒</div>
+    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;">乙木命盤全解</div>
+    <div style="font-size:12px;color:var(--text-mute);margin-bottom:18px;">請輸入密碼才能繼續</div>
+    <input id="pwInput" type="password" placeholder="密碼" style="width:100%;box-sizing:border-box;padding:10px 12px;border-radius:8px;border:1px solid var(--border);font-size:14px;margin-bottom:10px;">
+    <button id="pwSubmit" type="button" style="width:100%;padding:10px 12px;border-radius:8px;border:none;background:var(--accent);color:var(--accent-ink);font-size:14px;font-weight:600;cursor:pointer;">確認</button>
+    <div id="pwError" style="display:none;color:var(--cinnabar);font-size:12px;margin-top:10px;">密碼不對，再試一次</div>
+  </div>
+</div>
+
+<div id="pwProtected" style="display:none;">
+
+<script>
+(function(){
+  var PW_HASH_DEFAULT = "ee01f147ce42cef694b7a89ba8a8b46c7dca65a3d3bb708ed1200ffbb15e35e8";
+  var UNLOCK_KEY = "bwr-unlocked";
+  var PW_OVERRIDE_KEY = "bwr-pw-hash-override";
+
+  function currentHash(){
+    return localStorage.getItem(PW_OVERRIDE_KEY) || PW_HASH_DEFAULT;
+  }
+
+  function sha256Hex(text){
+    var enc = new TextEncoder().encode(text);
+    return crypto.subtle.digest("SHA-256", enc).then(function(buf){
+      return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,"0"); }).join("");
+    });
+  }
+
+  function unlock(){
+    document.getElementById("pwGate").style.display = "none";
+    document.getElementById("pwProtected").style.display = "";
+  }
+
+  if(sessionStorage.getItem(UNLOCK_KEY) === "1"){
+    unlock();
+  }
+
+  function tryPassword(){
+    var val = document.getElementById("pwInput").value;
+    sha256Hex(val).then(function(hash){
+      if(hash === currentHash()){
+        sessionStorage.setItem(UNLOCK_KEY, "1");
+        unlock();
+      }else{
+        document.getElementById("pwError").style.display = "block";
+      }
+    });
+  }
+
+  document.getElementById("pwSubmit").addEventListener("click", tryPassword);
+  document.getElementById("pwInput").addEventListener("keydown", function(e){
+    if(e.key === "Enter") tryPassword();
+  });
+})();
+</script>
+
+<div style="max-width:900px;margin:0 auto;padding:14px 20px 0;">
+  <a href="business-war-room.html" style="display:inline-block;font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:6px 12px;">← 回到四年行動作戰室</a>
+</div>
+
+<nav>
+  <a href="#pillars">四柱</a>
+  <a href="#dayun">大運</a>
+  <a href="#priority">重要度</a>
+  <a href="#wealth">財富格局</a>
+  <a href="#investment">投資策略</a>
+  <a href="#realestate">不動產</a>
+  <a href="#land">賣地分析</a>
+  <a href="#nego">談判話術</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">八字命盤全解</div>
+  <div class="hero-title">乙木日主<br>秋日花草之命</div>
+  <div class="hero-sub">身弱財重，大器晚成。水木為根，甲寅乙卯為一生黃金二十年。</div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="label">出生</div>
+      <div class="value">1982年9月19日 寅時</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">農曆</div>
+      <div class="value">壬戌年八月初三</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">日主</div>
+      <div class="value">乙木</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">格局評定</div>
+      <div class="value">四星偏上・大器晚成</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="label">當前大運</div>
+      <div class="value">癸丑運 2019–2028</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOUR PILLARS -->
+<div class="pillars-section" id="pillars">
+  <div class="section-title">四 柱 命 盤</div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-header">年柱</div>
+      <div class="pillar-tg c-water">壬</div>
+      <div class="pillar-dz c-earth">戌</div>
+      <div class="pillar-info">水・偏印<br>燥土・火庫<br>藏辛丁戊</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-header">月柱</div>
+      <div class="pillar-tg c-earth">己</div>
+      <div class="pillar-dz c-metal">酉</div>
+      <div class="pillar-info">土・偏財<br>金・七殺<br>藏辛</div>
+    </div>
+    <div class="pillar rizhu">
+      <div class="pillar-header">日柱（日主）</div>
+      <div class="pillar-tg c-wood">乙</div>
+      <div class="pillar-dz c-fire">巳</div>
+      <div class="pillar-info">木・日主★<br>火・傷官<br>藏庚戊丙</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-header">時柱</div>
+      <div class="pillar-tg c-earth">戊</div>
+      <div class="pillar-dz c-wood">寅</div>
+      <div class="pillar-info">土・正財<br>木・劫財・帝旺<br>藏甲丙戊</div>
+    </div>
+  </div>
+
+  <div class="wuxing-bars" style="margin-top:36px">
+    <div class="section-title" style="margin-bottom:16px">五 行 強 弱</div>
+    <div class="wx-row">
+      <div class="wx-label c-wood">木</div>
+      <div class="wx-bar-wrap"><div class="wx-bar" style="width:48%;background:#2d6a4f"></div></div>
+      <div class="wx-note">偏弱</div>
+    </div>
+    <div class="wx-row">
+      <div class="wx-label c-fire">火</div>
+      <div class="wx-bar-wrap"><div class="wx-bar" style="width:32%;background:#8b1a1a"></div></div>
+      <div class="wx-note">弱</div>
+    </div>
+    <div class="wx-row">
+      <div class="wx-label c-earth">土</div>
+      <div class="wx-bar-wrap"><div class="wx-bar" style="width:90%;background:#b8860b"></div></div>
+      <div class="wx-note">旺 ▲</div>
+    </div>
+    <div class="wx-row">
+      <div class="wx-label c-metal">金</div>
+      <div class="wx-bar-wrap"><div class="wx-bar" style="width:72%;background:#5a5a5a"></div></div>
+      <div class="wx-note">強</div>
+    </div>
+    <div class="wx-row">
+      <div class="wx-label c-water">水</div>
+      <div class="wx-bar-wrap"><div class="wx-bar" style="width:22%;background:#1a3a5c"></div></div>
+      <div class="wx-note">極弱</div>
+    </div>
+  </div>
+
+  <div class="cards" style="margin-top:36px;max-width:720px">
+    <div class="card">
+      <div class="card-title">喜用神</div>
+      <div class="card-body">
+        <span class="c-water">壬癸水</span>（身弱期）、<span class="c-wood">甲乙木</span>、<span class="c-earth">丑辰濕土</span><br>
+        身強後增加：<span class="c-fire">丙丁火</span>、<span class="c-earth">戊己土</span>、<span class="c-metal">庚辛金</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">忌神</div>
+      <div class="card-body">
+        <span class="c-metal">庚辛金・申酉</span>（官殺剋身）<br>
+        <span class="c-earth">戊己燥土・戌</span>（財多身弱）<br>
+        <span class="c-fire">午火</span>（洩木生燥土）
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">時柱寅木的特殊意義</div>
+      <div class="card-body">
+        寅藏甲丙戊，三元素齊備。甲寅、乙卯大運時，寅卯木連林，命局根氣被大運完全激活，是財富爆發的關鍵種子。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DAYUN -->
+<section id="dayun" style="max-width:900px;margin:0 auto">
+  <h2>大運走勢總覽</h2>
+
+  <p style="font-size:13px;color:var(--ink-faint);margin-bottom:24px">
+    起運7歲，月柱己酉順排。乙木十二長生以午為長生逆布十二支。<br>
+    身弱期（7–46歲）喜水木濕土 ／ 身強期（47–76歲）喜火土金 ／ 漸衰期（77歲後）喜水木
+  </p>
+
+  <table class="dayun-table">
+    <thead>
+      <tr>
+        <th>大運</th>
+        <th>年齡</th>
+        <th>乙木長生</th>
+        <th>身強弱</th>
+        <th>喜忌</th>
+        <th>核心解讀</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="gz-big c-earth">庚戌</span></td>
+        <td>7–16歲</td>
+        <td>墓</td>
+        <td>身弱</td>
+        <td><span class="tag tag-xiongji">大忌</span></td>
+        <td>庚金七殺剋木，戌燥土生金，壓力最重之大運。學業宜穩紮穩打。</td>
+      </tr>
+      <tr>
+        <td><span class="gz-big c-metal">辛亥</span></td>
+        <td>17–26歲</td>
+        <td>死</td>
+        <td>身弱</td>
+        <td><span class="tag tag-ji2">半忌半喜</span></td>
+        <td>辛金剋身為忌，亥水生木為喜。有貴人引路，宜深造充實。</td>
+      </tr>
+      <tr>
+        <td><span class="gz-big c-water">壬子</span></td>
+        <td>27–36歲</td>
+        <td>病</td>
+        <td>身弱</td>
+        <td><span class="tag tag-ji">喜</span></td>
+        <td>壬水偏印生木，子水旺地，水旺滋木。事業突破，貴人助力明顯，人生第一個重要積累期。</td>
+      </tr>
+      <tr class="current">
+        <td><span class="gz-big c-water">癸丑</span></td>
+        <td>37–46歲</td>
+        <td>衰</td>
+        <td>身弱</td>
+        <td><span class="tag tag-ji">喜</span> <span class="tag tag-now">當前</span></td>
+        <td>癸水正印滋木，丑濕土藏癸，整體順運。事業穩健，財星顯現，婚姻感情機遇佳。</td>
+      </tr>
+      <tr class="peak">
+        <td><span class="gz-big c-wood">甲寅</span></td>
+        <td>47–56歲</td>
+        <td>帝旺</td>
+        <td>身強</td>
+        <td><span class="tag tag-daji">三全大喜</span> <span class="tag tag-peak">★黃金</span></td>
+        <td>甲木劫財＋寅木帝旺，身強轉折點。命局三土財星全面激活，傷官生財格局顯現，事業財富雙收巔峰。</td>
+      </tr>
+      <tr class="peak">
+        <td><span class="gz-big c-wood">乙卯</span></td>
+        <td>57–66歲</td>
+        <td>臨官</td>
+        <td>身強</td>
+        <td><span class="tag tag-daji">三全大喜</span> <span class="tag tag-peak">★黃金</span></td>
+        <td>乙木同氣＋卯木臨官，寅卯木連林與時柱共鳴。身強持續，財官星仍可承擔，守成傳承期。</td>
+      </tr>
+      <tr>
+        <td><span class="gz-big c-fire">丙辰</span></td>
+        <td>67–76歲</td>
+        <td>冠帶</td>
+        <td>身強</td>
+        <td><span class="tag tag-ji">喜</span></td>
+        <td>丙火傷官生財，辰為濕土財庫，傷官生財入庫格局完整。財富固化期，不動產傳承最佳時機。</td>
+      </tr>
+      <tr>
+        <td><span class="gz-big c-fire">丁巳</span></td>
+        <td>77–86歲</td>
+        <td>沐浴</td>
+        <td>漸衰</td>
+        <td><span class="tag tag-ji2">忌</span></td>
+        <td>身轉漸衰，丁火洩木，巳藏庚金剋乙。注意心臟肝膽健康，規律養生。</td>
+      </tr>
+      <tr>
+        <td><span class="gz-big c-earth">戊午</span></td>
+        <td>87–96歲</td>
+        <td>長生</td>
+        <td>漸衰</td>
+        <td><span class="tag tag-xiongji">忌</span></td>
+        <td>戊土財星重壓，午火洩木生土，雖逢長生卻被天干所制。高齡靜養，家人陪伴為重。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="summary-box">
+    <h3>三全俱佳說明</h3>
+    <p>甲寅、乙卯兩段大運同時滿足三個條件：大運天干地支皆為喜用神（木）、十二長生在旺盛之位（帝旺、臨官）、身強後命局財星全面激活。加上時柱寅木在甲寅乙卯運中被完全激活，寅卯木連林根氣最穩，讓這二十年的效果遠超單看大運本身。</p>
+    <p>47–66歲這二十年是這個命局真正的黃金時代，也是財富積累的最關鍵視窗。</p>
+  </div>
+</section>
+
+<!-- PRIORITY -->
+<section id="priority">
+  <h2>命理五維度重要度排序</h2>
+  <blockquote>命局決定底牌，大運決定大局，流年決定時機，十神決定性質，十二長生決定力道強弱。</blockquote>
+  <table class="priority-table">
+    <thead>
+      <tr>
+        <th>優先度</th>
+        <th>維度</th>
+        <th>時間尺度</th>
+        <th>決定什麼</th>
+        <th>比喻</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="rank">①</span></td>
+        <td><strong>命局原局</strong></td>
+        <td>一生不變</td>
+        <td>身強弱本質、喜用神、財富格局上限</td>
+        <td>土地的地質</td>
+      </tr>
+      <tr>
+        <td><span class="rank">②</span></td>
+        <td><strong>大運</strong></td>
+        <td>10年一變</td>
+        <td>這十年大方向，決定流年的解讀方式</td>
+        <td>季節</td>
+      </tr>
+      <tr>
+        <td><span class="rank">③</span></td>
+        <td><strong>流年</strong></td>
+        <td>1年一變</td>
+        <td>當年具體觸發時機，好不好、做不做</td>
+        <td>天氣</td>
+      </tr>
+      <tr>
+        <td><span class="rank">④</span></td>
+        <td><strong>十神</strong></td>
+        <td>描述性質</td>
+        <td>發生的是什麼類型的事（財、官、印…）</td>
+        <td>種了什麼植物</td>
+      </tr>
+      <tr>
+        <td><span class="rank">⑤</span></td>
+        <td><strong>十二長生</strong></td>
+        <td>補充強弱</td>
+        <td>力量的強弱程度，必須搭配喜忌才有意義</td>
+        <td>植物的生長階段</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--ink-faint);margin-top:16px">
+    ※ 關鍵：同樣的流年，在不同大運下解讀完全不同。丙午流年在身弱期（忌神）是警訊，在身強期（喜用）反而是財運年。大運是解讀流年的前提。
+  </p>
+</section>
+
+<!-- WEALTH -->
+<section id="wealth">
+  <h2>一生財富格局</h2>
+
+  <div class="info-row">
+    <div class="info-item">
+      <div class="il">命局財富基因</div>
+      <div class="iv">中上</div>
+      <div class="is">財星多、有財庫、有生財管道</div>
+    </div>
+    <div class="info-item">
+      <div class="il">一生最高峰</div>
+      <div class="iv">高</div>
+      <div class="is">47–76歲身強三十年</div>
+    </div>
+    <div class="info-item">
+      <div class="il">財富持續性</div>
+      <div class="iv">強</div>
+      <div class="is">高峰期長達30年</div>
+    </div>
+    <div class="info-item">
+      <div class="il">守財能力</div>
+      <div class="iv">強</div>
+      <div class="is">寅藏戊土、辰土財庫</div>
+    </div>
+    <div class="info-item">
+      <div class="il">社會排名</div>
+      <div class="iv">前20%</div>
+      <div class="is">大器晚成型</div>
+    </div>
+  </div>
+
+  <!-- wealth bars -->
+  <div class="wealth-chart" style="margin-top:36px">
+    <div class="section-title" style="margin-bottom:16px">各階段資產推估（台灣中產背景起步）</div>
+    <div class="wc-bars">
+      <div class="wc-bar-group">
+        <div class="wc-bar" style="height:12%;background:#e0dbd0"></div>
+        <div class="wc-age">0–26</div>
+        <div class="wc-label">50–100萬</div>
+      </div>
+      <div class="wc-bar-group">
+        <div class="wc-bar" style="height:22%;background:#b5d4f4"></div>
+        <div class="wc-age">27–36</div>
+        <div class="wc-label">200–500萬</div>
+      </div>
+      <div class="wc-bar-group">
+        <div class="wc-bar" style="height:38%;background:#52b788"></div>
+        <div class="wc-age">37–46</div>
+        <div class="wc-label">500–1,500萬</div>
+      </div>
+      <div class="wc-bar-group">
+        <div class="wc-bar" style="height:72%;background:#2d6a4f"></div>
+        <div class="wc-age">47–56</div>
+        <div class="wc-label">2,000–5,000萬</div>
+      </div>
+      <div class="wc-bar-group">
+        <div class="wc-bar" style="height:95%;background:#1a4a32"></div>
+        <div class="wc-age">57–66</div>
+        <div class="wc-label">5,000–1億</div>
+      </div>
+      <div class="wc-bar-group">
+        <div class="wc-bar" style="height:85%;background:#2d6a4f"></div>
+        <div class="wc-age">67–76</div>
+        <div class="wc-label">8,000–1.5億</div>
+      </div>
+      <div class="wc-bar-group">
+        <div class="wc-bar" style="height:65%;background:#52b788"></div>
+        <div class="wc-age">77–86</div>
+        <div class="wc-label">傳承為主</div>
+      </div>
+    </div>
+    <div class="wc-axis"></div>
+  </div>
+
+  <div class="cards" style="margin-top:28px">
+    <div class="card">
+      <div class="card-title">大器晚成</div>
+      <div class="card-body">早年壓力重，40歲後才看得出財富高度。47歲起運的甲寅是人生轉折點，資產可從千萬量級跨越至億元。</div>
+    </div>
+    <div class="card">
+      <div class="card-title">後勁極強</div>
+      <div class="card-body">甲寅乙卯丙辰三段身強大運橫跨三十年，財富高峰期特別長，不是曇花一現。</div>
+    </div>
+    <div class="card">
+      <div class="card-title">固化能力強</div>
+      <div class="card-body">寅藏戊土、丙辰辰土財庫，賺到的錢能留住。不易散財，適合不動產長期持有策略。</div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section id="investment">
+  <h2>股票投資策略</h2>
+  <p style="font-size:13px;color:var(--ink-light);margin-bottom:24px">身強身弱決定喜忌，喜忌決定適合的產業類型。身弱期與身強期的投資邏輯完全相反。</p>
+
+  <table class="inv-table">
+    <thead>
+      <tr>
+        <th>大運</th><th>年齡</th><th>身強弱</th><th>適合產業（五行）</th><th>代表類型</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>壬子</strong></td><td>27–36</td><td>身弱</td>
+        <td>水木</td>
+        <td>航運、物流、生技醫療、教育</td>
+      </tr>
+      <tr style="background:rgba(45,106,79,.04)">
+        <td><strong>癸丑</strong></td><td>37–46</td><td>身弱</td>
+        <td>水土</td>
+        <td>物流、倉儲、生技、水資源（如日勝生）</td>
+      </tr>
+      <tr style="background:rgba(184,134,11,.06)">
+        <td><strong>甲寅 ★</strong></td><td>47–56</td><td>身強</td>
+        <td>火土金</td>
+        <td>半導體、科技、營建、金融、鋼鐵</td>
+      </tr>
+      <tr style="background:rgba(184,134,11,.06)">
+        <td><strong>乙卯 ★</strong></td><td>57–66</td><td>身強</td>
+        <td>火土金</td>
+        <td>金融定存股、不動產、電力公用事業</td>
+      </tr>
+      <tr style="background:rgba(184,134,11,.04)">
+        <td><strong>丙辰</strong></td><td>67–76</td><td>身強</td>
+        <td>土金</td>
+        <td>REITs、金融定存股、公用事業</td>
+      </tr>
+      <tr>
+        <td><strong>丁巳後</strong></td><td>77+</td><td>漸衰</td>
+        <td>水木</td>
+        <td>公債、定存、醫療生技</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card" style="margin-top:24px;border-left:3px solid var(--jade)">
+    <div class="card-title">日勝生（2547）特別說明</div>
+    <div class="card-body">
+      日勝生以<strong>循環經濟水資源為營收主軸</strong>（占46%），同時涵蓋康養（木）與營建（土），三大業務覆蓋水木土三種五行，對此命格是罕見的<strong>全週期對應股</strong>。<br><br>
+      身弱期（現在）：水資源業務對應喜用神，可佈局20–30%。<br>
+      身強期（甲寅後）：營建豪宅業務接棒，三業務全面成熟，長期持有收息。<br><br>
+      <span style="color:var(--ink-faint);font-size:12px">2026年三期完工（桃園污水BOT處理量從10萬提升至15萬CMD）為近期最重要的催化劑。</span>
+    </div>
+  </div>
+</section>
+
+<!-- REAL ESTATE -->
+<section id="realestate">
+  <h2>不動產佈局策略</h2>
+
+  <table class="inv-table">
+    <thead>
+      <tr>
+        <th>大運</th><th>年齡</th><th>自用店面</th><th>農地</th><th>建地</th><th>核心動作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:rgba(45,106,79,.04)">
+        <td><strong>癸丑尾</strong></td><td>44–46</td>
+        <td>✓ 試水</td><td>✓ 試水</td><td>✓ 試水</td>
+        <td>首次佈局，為甲寅運準備子彈</td>
+      </tr>
+      <tr style="background:rgba(184,134,11,.06)">
+        <td><strong>甲寅 ★</strong></td><td>47–56</td>
+        <td>✓✓✓ 積極買進</td><td>✓✓ 佈局</td><td>✓✓ 佈局</td>
+        <td>帝旺身強，全面擴張，核心商業不動產首選</td>
+      </tr>
+      <tr style="background:rgba(184,134,11,.06)">
+        <td><strong>乙卯 ★</strong></td><td>57–66</td>
+        <td>✓✓ 持有</td><td>✓✓✓ 農地首選</td><td>✓ 持有</td>
+        <td>農地為主，乙木本為花草，農地與命格最契合</td>
+      </tr>
+      <tr>
+        <td><strong>丙辰</strong></td><td>67–76</td>
+        <td>✓✓ 收租傳承</td><td>✓✓✓ 固化入庫</td><td>✓✓ 考慮出售</td>
+        <td>辰土財庫封存，傷官生財入庫，財富固化期</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="cards" style="margin-top:20px">
+    <div class="card">
+      <div class="card-title">丙辰運仍可買進</div>
+      <div class="card-body">辰為濕土財庫，買入不動產等於財直接入庫。身強延續，承擔財星能力猶在。辰中藏癸水，財庫中藏喜用神，資產本身持續滋養日主。最佳買進年：2027、2028、2033、2038年。</div>
+    </div>
+    <div class="card">
+      <div class="card-title">巳寅相刑提醒</div>
+      <div class="card-body">日支巳與時支寅相刑，不動產持有過程中需注意糾紛或意外變動。建議單獨持有，避免合夥共有。甲寅運寅寅自刑，法律文件務必嚴謹。</div>
+    </div>
+  </div>
+</section>
+
+<!-- LAND SALE -->
+<section id="land">
+  <h2>台南佳里農地賣出分析</h2>
+  <p style="font-size:13px;color:var(--ink-light);margin-bottom:20px">台南市佳里區興化段，持分20/100，建商整合所有共有人持分。</p>
+
+  <table class="inv-table">
+    <thead>
+      <tr><th>編號</th><th>地號</th><th>面積</th><th>持分</th><th>坪數</th><th>使用分區</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td><td>36</td><td>3,677㎡</td><td>20/100</td><td>222.46坪</td><td>鄉村乙建</td>
+      </tr>
+      <tr>
+        <td>2</td><td>37</td><td>529㎡</td><td>20/100</td><td>32坪</td><td>鄉村乙建</td>
+      </tr>
+      <tr>
+        <td>3</td><td>51</td><td>553㎡</td><td>20/100</td><td>33.5坪</td><td>鄉村乙建</td>
+      </tr>
+      <tr>
+        <td>4</td><td>35</td><td>96㎡</td><td>20/100</td><td>5.81坪</td><td>道路</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="cards" style="margin-top:20px">
+    <div class="card">
+      <div class="card-title">建地價格目標</div>
+      <div class="card-body">
+        建商開價：5萬/坪<br>
+        您的開口：10萬/坪以上<br>
+        <strong>理想成交目標：8萬/坪</strong><br>
+        最低底線：7萬/坪<br><br>
+        三筆建地合計約288坪（持分）<br>
+        8萬/坪 ≈ 2,304萬
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">道路用地35折不合理</div>
+      <div class="card-body">
+        建商開價：公告現值35折<br>
+        您的開口：公告現值1.5倍<br>
+        <strong>理想成交目標：公告現值1倍</strong><br>
+        最低底線：公告現值70折<br><br>
+        道路是整個開發案的必要出入口，對建商是關鍵資產，不是廢地。
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">命格最佳成交時間</div>
+      <div class="card-body">
+        2026年（丙午）：談判有波折，可談但別急簽<br>
+        <strong>2027年（丁未）：財庫入庫象，最順</strong><br>
+        <strong>2028年（戊申）：財契雙全，最理想</strong><br><br>
+        距甲寅運（2029）只剩3年，賣地所得即是甲寅運爆發的子彈。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEGOTIATION -->
+<section id="nego">
+  <h2>談判話術完整腳本</h2>
+  <p style="font-size:13px;color:var(--ink-faint);margin-bottom:32px">按照順序使用，建商越需要您的持分，您的籌碼就越大。</p>
+
+  <div class="nego-step">
+    <div class="step-label">第一回合 — 開場表態</div>
+    <div class="step-say">「我有仔細看過契約內容，建地的部分我們可以談，但道路用地35折這個條件我沒辦法接受，這部分需要調整才能繼續討論。」</div>
+    <div class="step-note">不說「不賣」，只說「需要調整」，讓對話繼續。</div>
+  </div>
+
+  <div class="nego-step">
+    <div class="step-label">第二回合 — 道路用地理由</div>
+    <div class="step-say">「你們做不動產開發的應該很清楚，這條道路是36、37、51號地對外聯絡的唯一出入口。沒有把道路用地的持分一起整合進來，建照申請就會有問題。這條路的持分對你們是必要條件，用35折公告現值來算對我不公平。」</div>
+  </div>
+
+  <div class="nego-step">
+    <div class="step-label">第三回合 — 建商說「大家都這樣」</div>
+    <div class="step-say">「我理解道路用地比建地低，這個我接受。但35折是把公告現值打折再打折，公告現值本身就已經低於市價了。我的要求很簡單，道路用地至少要回到公告現值1倍，這才是合理的起點。」</div>
+  </div>
+
+  <div class="nego-step">
+    <div class="step-label">第四回合 — 把道路與建地綁在一起</div>
+    <div class="step-say">「道路用地和建地是同一筆交易，我沒辦法切開來談。如果道路用地堅持35折，那建地的5萬一坪我也需要重新考慮。你們給我一個讓我整體可以接受的條件。」</div>
+    <div class="step-note">把道路用地讓步換成建地漲價，才是最聰明的談判方式。</div>
+  </div>
+
+  <div class="nego-step">
+    <div class="step-label">第五回合 — 建商給時間壓力</div>
+    <div class="step-say">「其他人簽他們的，我簽我的。你們需要所有持分人都同意才能完成整合，少我一個就不完整，所以我不需要跟別人比快慢。條件談好了我馬上簽，條件沒談好不會因為別人簽了就跟著簽。」</div>
+    <div class="step-note">建商需要您，不是您需要建商。</div>
+  </div>
+
+  <div class="nego-step">
+    <div class="step-label">第六回合 — 最後確認</div>
+    <div class="step-say">「好，我們確認一下。建地每坪X萬，道路用地公告現值1倍，付款方式一次付清，過戶完成後X天內匯款。這些條件請白紙黑字寫進契約，口頭說的我沒辦法算數。」</div>
+    <div class="step-note">簽約前務必找地政士確認公告現值，找律師審閱契約。</div>
+  </div>
+
+  <div class="summary-box">
+    <h3>丙午流年談判心態提醒</h3>
+    <p>今年（2026丙午）火旺，巳午半火局，日主容易急躁。建商可能給您時間壓力，但您的最大敵人不是建商，是自己的急躁。</p>
+    <p>癸丑運的特質是穩健中求機遇。這筆交易值得做，但價格沒談好寧可等到2027–2028年。條件沒談好就說：「這個條件我沒辦法接受，你們考慮好再來找我。」然後站起來離開，讓沉默發揮作用。</p>
+  </div>
+</section>
+
+<footer style="background:var(--ink);color:#606060;text-align:center;padding:24px;font-size:11px;letter-spacing:.5px">
+  乙木命盤全解 · 僅供參考，不構成投資或法律建議
+</footer>
+
+</div>
+</body>
+</html>

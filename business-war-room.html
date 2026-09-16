@@ -913,6 +913,13 @@ function buildNav(){
       item.addEventListener('click', () => { openTab(k); closeSidebar(); });
       list.appendChild(item);
     });
+    if(cat === '家庭與命理'){
+      const linkItem = el(`<a class="nav-item" href="bazi-analysis.html" style="text-decoration:none;">
+        <span class="ni">${ico('sparkle')}</span>
+        <span class="nt">乙木命盤全解（八字分析）</span>
+      </a>`);
+      list.appendChild(linkItem);
+    }
     group.querySelector('.cat-head').addEventListener('click', () => {
       group.classList.toggle('collapsed');
     });
