@@ -16,13 +16,15 @@ body{font-family:'Noto Sans TC',sans-serif;background:#F7F8FA;color:#1A1C24;min-
 .page{max-width:720px;margin:0 auto}
 
 /* NAV */
-.nav{display:flex;gap:6px;margin-bottom:1.5rem;flex-wrap:wrap}
-.nav-btn{font-size:11px;padding:6px 14px;border-radius:99px;border:1px solid #D4A017;background:#fff;color:#B8860B;cursor:pointer;letter-spacing:.04em;transition:all .15s;font-family:'Noto Sans TC',sans-serif}
+.nav{display:flex;gap:6px;margin-bottom:1.5rem;padding:10px 0;position:sticky;top:0;z-index:100;background:rgba(247,248,250,.95);backdrop-filter:blur(6px);overflow-x:auto;white-space:nowrap;scrollbar-width:none;border-bottom:1px solid #E0E4EC}
+.nav::-webkit-scrollbar{display:none}
+.nav-btn{display:inline-block;text-decoration:none;flex-shrink:0;font-size:11px;padding:6px 14px;border-radius:99px;border:1px solid #D4A017;background:#fff;color:#B8860B;cursor:pointer;letter-spacing:.04em;transition:all .15s;font-family:'Noto Sans TC',sans-serif}
 .nav-btn:hover{background:#FEF9EC;color:#B8860B}
 .nav-btn.active{background:#D4A017;color:#fff;border-color:#D4A017}
 
-.tab-section{display:none}
-.tab-section.active{display:block}
+.tab-section{display:block;padding-top:1.8rem;margin-top:.5rem;border-top:1px dashed #E0E4EC}
+#tab1{border-top:none;padding-top:0;margin-top:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
 
 /* HERO */
 .hero{text-align:center;margin-bottom:2rem;padding:2rem 2rem 1.5rem;background:linear-gradient(135deg,#EBF4FF 0%,#FEF9EC 100%);border:1px solid #D4A017;border-radius:16px;position:relative;overflow:hidden}
@@ -175,85 +177,9 @@ body{font-family:'Noto Sans TC',sans-serif;background:#F7F8FA;color:#1A1C24;min-
 
 /* FOOTER */
 .footer{text-align:center;margin-top:2.5rem;padding-top:1rem;border-top:1px solid #E0E4EC;font-size:10px;color:#A0A8B8;line-height:1.9}
-.branch-nav{
-  --nav-bg:#FFFFFF; --nav-border:#E3E1D8; --nav-text:#1F1E1B;
-  --nav-text-dim:#6B6960; --nav-current-bg:#F1EFE8;
-}
-@media (prefers-color-scheme: dark){
-  .branch-nav{
-    --nav-bg:#242219; --nav-border:#3A3830; --nav-text:#F2F1EA;
-    --nav-text-dim:#B4B2A9; --nav-current-bg:#1D1C15;
-  }
-}
-.branch-nav{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;
-  font-size:13px; background:var(--nav-bg); border-right:0.5px solid var(--nav-border);
-  padding:20px 14px; box-sizing:border-box;
-}
-.branch-nav .branch-group{margin-bottom:18px;}
-.branch-nav .branch-title{display:flex;align-items:center;gap:6px;font-weight:600;color:var(--nav-text);margin-bottom:8px;cursor:pointer;user-select:none;}
-.branch-nav .branch-title .caret{margin-left:auto;font-size:10px;color:var(--nav-text-dim);transition:transform .15s ease;}
-.branch-nav .branch-group.collapsed .branch-title .caret{transform:rotate(-90deg);}
-.branch-nav .branch-group.collapsed .branch-items{display:none;}
-.branch-nav .branch-items{list-style:none;margin:0;padding:0;border-left:1px solid var(--nav-border);margin-left:6px;}
-.branch-nav .branch-items li{position:relative;padding:5px 0 5px 16px;}
-.branch-nav .branch-items li::before{content:"";position:absolute;left:-1px;top:14px;width:12px;height:1px;background:var(--nav-border);}
-.branch-nav .branch-items a{color:var(--nav-text-dim);text-decoration:none;display:block;padding:4px 8px;border-radius:6px;}
-.branch-nav .branch-items a:hover{background:var(--nav-current-bg);}
-.branch-nav .branch-items a.current{color:var(--nav-text);font-weight:600;background:var(--nav-current-bg);}
-@media (min-width:761px){
-  .branch-nav{position:fixed;top:0;left:0;bottom:0;width:190px;overflow-y:auto;z-index:100;}
-  body{padding-left:190px;}
-}
-@media (max-width:760px){
-  .branch-nav{border-right:none;border-bottom:0.5px solid var(--nav-border);padding:14px;position:static;}
-  .branch-nav .branch-group{margin-bottom:10px;}
-  .branch-nav .branch-group.collapsed .branch-items{display:flex;}
-  .branch-nav .branch-title .caret{display:none;}
-  .branch-nav .branch-items{display:flex;flex-wrap:wrap;gap:4px;border-left:none;margin-left:0;}
-  .branch-nav .branch-items li{padding:0;}
-  .branch-nav .branch-items li::before{display:none;}
-  .branch-nav .branch-items a{padding:4px 10px;border:0.5px solid var(--nav-border);border-radius:14px;}
-}
 </style>
 </head>
 <body>
-<nav class="branch-nav">
-  <div class="branch-group">
-    <div class="branch-title"><span class="icon">📁</span>機器人學習主線<span class="caret">▾</span></div>
-    <ul class="branch-items">
-      <li><a href="overview.html">四年計畫總覽</a></li>
-      <li><a href="index.html">週進度追蹤器</a></li>
-    </ul>
-  </div>
-  <div class="branch-group">
-    <div class="branch-title"><span class="icon">📁</span>英文學習支線<span class="caret">▾</span></div>
-    <ul class="branch-items">
-      <li><a href="english-overview.html">大綱總覽</a></li>
-      <li><a href="english-log.html">24週日誌</a></li>
-    </ul>
-  </div>
-  <div class="branch-group">
-    <div class="branch-title"><span class="icon">📁</span>創業戰情室<span class="caret">▾</span></div>
-    <ul class="branch-items">
-      <li><a href="business-war-room.html">四年行動作戰室</a></li>
-    </ul>
-  </div>
-  <div class="branch-group">
-    <div class="branch-title"><span class="icon">📁</span>老婆支線<span class="caret">▾</span></div>
-    <ul class="branch-items">
-      <li><a href="bazi_summary_v3.html" class="current">老婆資料區</a></li>
-    </ul>
-  </div>
-</nav>
-<script>
-document.querySelectorAll('.branch-nav .branch-title').forEach(function(t){
-  t.addEventListener('click', function(){
-    t.closest('.branch-group').classList.toggle('collapsed');
-  });
-});
-</script>
-
 <div class="page">
 
 <!-- HERO -->
@@ -270,18 +196,18 @@ document.querySelectorAll('.branch-nav .branch-title').forEach(function(t){
 
 <!-- NAV -->
 <div class="nav">
-  <button class="nav-btn active" onclick="showTab('tab1',this)">命盤基礎</button>
-  <button class="nav-btn" onclick="showTab('tab2',this)">大運分析</button>
-  <button class="nav-btn" onclick="showTab('tab3',this)">五行投資</button>
-  <button class="nav-btn" onclick="showTab('tab4',this)">台股方向</button>
-  <button class="nav-btn" onclick="showTab('tab5',this)">不動產</button>
-  <button class="nav-btn" onclick="showTab('tab6',this)">財富推算</button>
-  <button class="nav-btn" onclick="showTab('tab7',this)">性格貴人</button>
-  <button class="nav-btn" onclick="showTab('tab8',this)">七大核心</button>
+  <a class="nav-btn active" href="#tab1">命盤基礎</a>
+  <a class="nav-btn" href="#tab2">大運分析</a>
+  <a class="nav-btn" href="#tab3">五行投資</a>
+  <a class="nav-btn" href="#tab4">台股方向</a>
+  <a class="nav-btn" href="#tab5">不動產</a>
+  <a class="nav-btn" href="#tab6">財富推算</a>
+  <a class="nav-btn" href="#tab7">性格貴人</a>
+  <a class="nav-btn" href="#tab8">七大核心</a>
 </div>
 
 <!-- TAB 1 -->
-<div id="tab1" class="tab-section active">
+<div id="tab1" class="tab-section">
   <div class="sec">
     <div class="sec-title">四柱命盤</div>
     <div class="pillars">
@@ -652,13 +578,22 @@ document.querySelectorAll('.branch-nav .branch-title').forEach(function(t){
 
 </div>
 <script>
-function showTab(id,btn){
-  document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
+(function(){
+  var btns=[].slice.call(document.querySelectorAll('.nav-btn'));
+  var secs=btns.map(function(b){return document.querySelector(b.getAttribute('href'));});
+  function spy(){
+    var y=window.scrollY+90, cur=0;
+    secs.forEach(function(sec,i){ if(sec && sec.offsetTop<=y) cur=i; });
+    btns.forEach(function(b,i){ b.classList.toggle('active',i===cur); });
+    var nav=document.querySelector('.nav'), b=btns[cur];
+    if(b && nav.scrollWidth>nav.clientWidth){
+      var target=b.offsetLeft-(nav.clientWidth-b.offsetWidth)/2;
+      if(Math.abs(nav.scrollLeft-target)>4) nav.scrollLeft=target;
+    }
+  }
+  window.addEventListener('scroll',spy,{passive:true});
+  spy();
+})();
 </script>
 </body>
 </html>
