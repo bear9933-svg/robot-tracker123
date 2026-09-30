@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>乙木命格・一生財富格局</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rice: #F5F0E8;
+  --rice-dark: #EDE5D8;
+  --ink: #1C1C1A;
+  --ink-light: #3D3D38;
+  --ink-mist: #6B6B60;
+  --vermillion: #C0392B;
+  --vermillion-soft: #D44333;
+  --moss: #2D5016;
+  --moss-mid: #4A7C2F;
+  --moss-light: #6B9E4A;
+  --gold: #B8860B;
+  --gold-light: #D4A017;
+  --sage: #8FAF72;
+  --border: rgba(45,80,22,0.18);
+  --shadow: rgba(28,28,26,0.08);
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+body {
+  background: var(--rice);
+  color: var(--ink);
+  font-family: 'Noto Serif TC', serif;
+  font-size: 15px;
+  line-height: 1.85;
+  min-height: 100%;
+}
+
+/* ── Brush stroke decoration ── */
+.brush-hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--moss) 20%, var(--vermillion) 50%, var(--moss) 80%, transparent 100%);
+  opacity: 0.35;
+  margin: 0;
+}
+
+/* ── Hero ── */
+.hero {
+  background: var(--ink);
+  color: var(--rice);
+  padding: 64px 24px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '命';
+  position: absolute;
+  font-size: 320px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.03);
+  top: -60px; right: -40px;
+  line-height: 1;
+  pointer-events: none;
+  font-family: 'Noto Serif TC', serif;
+}
+.hero-seal {
+  display: inline-block;
+  border: 2px solid var(--vermillion);
+  color: var(--vermillion);
+  font-size: 11px;
+  letter-spacing: 3px;
+  padding: 4px 14px;
+  margin-bottom: 20px;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.hero h1 {
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 300;
+  letter-spacing: 6px;
+  color: var(--rice);
+  margin-bottom: 10px;
+}
+.hero h1 strong {
+  color: var(--gold-light);
+  font-weight: 700;
+}
+.hero-sub {
+  font-size: 13px;
+  color: rgba(245,240,232,0.55);
+  letter-spacing: 2px;
+  font-family: 'Noto Sans TC', sans-serif;
+  margin-top: 8px;
+}
+.hero-pillars {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.pillar {
+  background: rgba(245,240,232,0.06);
+  border: 1px solid rgba(245,240,232,0.15);
+  padding: 10px 18px;
+  text-align: center;
+  min-width: 72px;
+}
+.pillar-label {
+  font-size: 10px;
+  color: rgba(245,240,232,0.45);
+  letter-spacing: 1px;
+  font-family: 'Noto Sans TC', sans-serif;
+  display: block;
+  margin-bottom: 4px;
+}
+.pillar-gz {
+  font-size: 18px;
+  color: var(--gold-light);
+  font-weight: 500;
+  display: block;
+}
+.pillar-shen {
+  font-size: 10px;
+  color: rgba(192,57,43,0.8);
+  display: block;
+  margin-top: 2px;
+}
+
+/* ── Layout ── */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── Section ── */
+.section {
+  padding: 48px 0 40px;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-child { border-bottom: none; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.section-mark {
+  width: 4px;
+  height: 36px;
+  background: linear-gradient(180deg, var(--vermillion) 0%, var(--moss) 100%);
+  flex-shrink: 0;
+}
+.section-title {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--ink);
+}
+.section-sub {
+  font-size: 12px;
+  color: var(--ink-mist);
+  letter-spacing: 1px;
+  font-family: 'Noto Sans TC', sans-serif;
+  margin-top: 2px;
+}
+
+/* ── Info grid ── */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+.info-cell {
+  background: var(--rice);
+  padding: 16px 20px;
+}
+.info-cell-label {
+  font-size: 11px;
+  color: var(--ink-mist);
+  font-family: 'Noto Sans TC', sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.info-cell-value {
+  font-size: 15px;
+  color: var(--ink);
+  font-weight: 500;
+}
+.info-cell-value.vermillion { color: var(--vermillion); }
+.info-cell-value.moss { color: var(--moss); }
+.info-cell-value.gold { color: var(--gold); }
+
+/* ── Tables ── */
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  margin-bottom: 20px;
+}
+.tbl th {
+  background: var(--moss);
+  color: var(--rice);
+  padding: 10px 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-family: 'Noto Sans TC', sans-serif;
+  text-align: left;
+  font-size: 12px;
+}
+.tbl td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink-light);
+  vertical-align: top;
+}
+.tbl tr:nth-child(even) td { background: rgba(45,80,22,0.03); }
+.tbl tr:hover td { background: rgba(45,80,22,0.06); }
+
+/* ── Stars ── */
+.stars { color: var(--gold); font-size: 13px; letter-spacing: 1px; }
+.stars.vermillion { color: var(--vermillion); }
+
+/* ── Tags ── */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 11px;
+  border-radius: 2px;
+  font-family: 'Noto Sans TC', sans-serif;
+  letter-spacing: 0.5px;
+}
+.tag-good { background: rgba(45,80,22,0.12); color: var(--moss); border: 1px solid rgba(45,80,22,0.25); }
+.tag-warn { background: rgba(184,134,11,0.12); color: var(--gold); border: 1px solid rgba(184,134,11,0.3); }
+.tag-bad  { background: rgba(192,57,43,0.10); color: var(--vermillion); border: 1px solid rgba(192,57,43,0.25); }
+.tag-best { background: var(--moss); color: var(--rice); border: 1px solid var(--moss); }
+
+/* ── Cards ── */
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.card {
+  border: 1px solid var(--border);
+  background: #fff;
+  padding: 20px;
+  position: relative;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.card.moss-card::before { background: var(--moss); }
+.card.vermillion-card::before { background: var(--vermillion); }
+.card.gold-card::before { background: var(--gold); }
+.card-title {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.card-val {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--moss);
+  font-family: 'Noto Sans TC', sans-serif;
+  line-height: 1.2;
+}
+.card-val.vermillion { color: var(--vermillion); }
+.card-val.gold { color: var(--gold); }
+.card-desc {
+  font-size: 12px;
+  color: var(--ink-mist);
+  margin-top: 6px;
+  font-family: 'Noto Sans TC', sans-serif;
+  line-height: 1.6;
+}
+
+/* ── Timeline ── */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, var(--moss) 0%, var(--vermillion) 100%);
+  opacity: 0.3;
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 24px;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 6px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--moss);
+  border: 2px solid var(--rice);
+  box-shadow: 0 0 0 1px var(--moss);
+}
+.tl-item.peak::before { background: var(--vermillion); box-shadow: 0 0 0 1px var(--vermillion); }
+.tl-item.gold-pt::before { background: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+.tl-year {
+  font-size: 11px;
+  color: var(--ink-mist);
+  font-family: 'Noto Sans TC', sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+.tl-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.tl-desc {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.7;
+}
+
+/* ── Quote block ── */
+.ink-quote {
+  border-left: 3px solid var(--vermillion);
+  padding: 14px 20px;
+  background: rgba(192,57,43,0.04);
+  margin: 20px 0;
+  font-size: 14px;
+  color: var(--ink-light);
+  line-height: 1.8;
+}
+
+/* ── Wealth bar ── */
+.wealth-bar-wrap { margin: 8px 0 4px; }
+.wealth-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--ink-mist);
+  font-family: 'Noto Sans TC', sans-serif;
+  margin-bottom: 4px;
+}
+.wealth-bar-track {
+  height: 8px;
+  background: var(--rice-dark);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.wealth-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--moss-light), var(--moss));
+}
+
+/* ── Nav ── */
+.sticky-nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 100;
+  background: rgba(28,28,26,0.96);
+  padding: 0 20px;
+  overflow-x: auto;
+  display: flex;
+  gap: 0;
+  scrollbar-width: none;
+}
+.sticky-nav::-webkit-scrollbar { display: none; }
+.nav-item {
+  color: rgba(245,240,232,0.6);
+  font-size: 12px;
+  font-family: 'Noto Sans TC', sans-serif;
+  letter-spacing: 1px;
+  padding: 12px 16px;
+  white-space: nowrap;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-item:hover {
+  color: var(--gold-light);
+  border-bottom-color: var(--gold-light);
+}
+
+/* ── Two-col ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 600px) {
+  .two-col { grid-template-columns: 1fr; }
+  .card-row { grid-template-columns: 1fr; }
+  .hero-pillars { gap: 2px; }
+  .pillar { min-width: 60px; padding: 8px 10px; }
+  .tbl { font-size: 12px; }
+  .tbl th, .tbl td { padding: 8px 8px; }
+}
+
+/* ── Highlight row ── */
+.tbl tr.highlight-row td {
+  background: rgba(192,57,43,0.07);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ── Footer ── */
+.footer {
+  background: var(--ink);
+  color: rgba(245,240,232,0.4);
+  text-align: center;
+  padding: 32px 20px;
+  font-size: 12px;
+  font-family: 'Noto Sans TC', sans-serif;
+  letter-spacing: 1px;
+}
+.footer strong { color: var(--gold-light); }
+
+/* ── Print ── */
+@media print {
+  .sticky-nav { display: none; }
+  .section { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-seal">八字命格分析</div>
+  <h1>乙木日主・<strong>戊寅時柱</strong></h1>
+  <div class="hero-sub">1982年9月19日 寅時生・男命・偏官格</div>
+  <div class="hero-pillars">
+    <div class="pillar">
+      <span class="pillar-label">年柱</span>
+      <span class="pillar-gz">壬戌</span>
+      <span class="pillar-shen">正印</span>
+    </div>
+    <div class="pillar">
+      <span class="pillar-label">月柱</span>
+      <span class="pillar-gz">己酉</span>
+      <span class="pillar-shen">偏官格</span>
+    </div>
+    <div class="pillar">
+      <span class="pillar-label">日柱</span>
+      <span class="pillar-gz">乙巳</span>
+      <span class="pillar-shen">日主</span>
+    </div>
+    <div class="pillar">
+      <span class="pillar-label">時柱</span>
+      <span class="pillar-gz">戊寅</span>
+      <span class="pillar-shen">正財帝旺</span>
+    </div>
+  </div>
+</header>
+
+<!-- Nav -->
+<nav class="sticky-nav">
+  <a class="nav-item" href="#mingpan">命盤結構</a>
+  <a class="nav-item" href="#dayun">大運總覽</a>
+  <a class="nav-item" href="#golden">黃金二十年</a>
+  <a class="nav-item" href="#wealth">財富格局</a>
+  <a class="nav-item" href="#realestate">不動產</a>
+  <a class="nav-item" href="#stocks">股票五行</a>
+  <a class="nav-item" href="#city">城市選擇</a>
+  <a class="nav-item" href="#summary">總結</a>
+</nav>
+
+<div class="container">
+
+<!-- ① 命盤結構 -->
+<section class="section" id="mingpan">
+  <div class="section-header">
+    <div class="section-mark"></div>
+    <div>
+      <div class="section-title">命盤核心結構</div>
+      <div class="section-sub">格局・強弱・喜忌・時柱解析</div>
+    </div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-cell">
+      <div class="info-cell-label">日主</div>
+      <div class="info-cell-value moss">乙木・陰干</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-cell-label">格局</div>
+      <div class="info-cell-value vermillion">偏官格</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-cell-label">身強弱</div>
+      <div class="info-cell-value">身弱偏中</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-cell-label">喜用神</div>
+      <div class="info-cell-value moss">水・木</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-cell-label">忌神</div>
+      <div class="info-cell-value vermillion">金・火・土</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-cell-label">時柱特質</div>
+      <div class="info-cell-value gold">正財帝旺・永久財根</div>
+    </div>
+  </div>
+
+  <div class="ink-quote">
+    時柱戊寅藏甲木（劫財）、丙火（傷官）、戊土（正財），乙木坐寅為帝旺之地——正財根氣最深，傷官生財結構完整，是命盤中永久不滅的財富底座。
+  </div>
+
+  <div class="two-col">
+    <div>
+      <table class="tbl">
+        <thead><tr><th>喜用神</th><th>五行</th><th>作用</th></tr></thead>
+        <tbody>
+          <tr><td>壬癸水</td><td>正偏印</td><td>滋養乙木、化偏官殺氣</td></tr>
+          <tr><td>甲乙木</td><td>比劫</td><td>幫扶身弱日主</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <table class="tbl">
+        <thead><tr><th>忌神</th><th>五行</th><th>作用</th></tr></thead>
+        <tbody>
+          <tr><td>庚辛金</td><td>正偏官</td><td>直接剋身，月令已強</td></tr>
+          <tr><td>丙丁火</td><td>傷食</td><td>洩耗日主能量</td></tr>
+          <tr><td>戊己土</td><td>正偏財</td><td>剋制喜用神壬癸水</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ink-quote" style="border-color:var(--moss); background:rgba(45,80,22,0.04)">
+    十二長生口訣：乙木陰干逆行，長生在午——<strong>午長生・巳沐浴・辰冠帶・卯臨官・寅帝旺・丑衰・子病・亥死・戌墓・酉絕・申胎・未養</strong>。好的六個：長生・沐浴・冠帶・臨官・帝旺・養。
+  </div>
+</section>
+
+<!-- ② 大運總覽 -->
+<section class="section" id="dayun">
+  <div class="section-header">
+    <div class="section-mark"></div>
+    <div>
+      <div class="section-title">大運總覽・0–106歲</div>
+      <div class="section-sub">旺衰・喜忌・時柱寅加持・整體評級</div>
+    </div>
+  </div>
+
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th>大運</th><th>年齡</th><th>乙木旺衰</th><th>喜忌</th><th>時柱寅</th><th>整體</th><th>定性</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>庚戌</td><td>7–16</td><td>墓</td><td><span class="tag tag-bad">金忌</span></td><td>弱</td><td><span class="stars">★</span></td><td>依賴父母</td></tr>
+      <tr><td>辛亥</td><td>17–26</td><td>死</td><td><span class="tag tag-warn">半喜</span></td><td>中</td><td><span class="stars">★★</span></td><td>打基礎</td></tr>
+      <tr><td>壬子</td><td>27–36</td><td>病</td><td><span class="tag tag-good">水喜</span></td><td>中強</td><td><span class="stars">★★★</span></td><td>穩定成長</td></tr>
+      <tr><td>癸丑</td><td>37–46</td><td>衰</td><td><span class="tag tag-warn">半喜</span></td><td>中</td><td><span class="stars">★★★</span></td><td>守成蓄力</td></tr>
+      <tr class="highlight-row"><td>甲寅</td><td>47–56</td><td>帝旺</td><td><span class="tag tag-best">木喜✅✅</span></td><td>最強</td><td><span class="stars">★★★★★</span></td><td>全力衝刺</td></tr>
+      <tr class="highlight-row"><td>乙卯</td><td>57–66</td><td>臨官</td><td><span class="tag tag-best">木喜✅✅</span></td><td>很強</td><td><span class="stars">★★★★★</span></td><td>收成巔峰</td></tr>
+      <tr><td>丙辰</td><td>67–76</td><td>冠帶</td><td><span class="tag tag-warn">中性有用</span></td><td>中強</td><td><span class="stars">★★★★</span><span class="stars" style="opacity:.4">½</span></td><td>財庫收藏</td></tr>
+      <tr><td>丁巳</td><td>77–86</td><td>沐浴</td><td><span class="tag tag-warn">中性</span></td><td>受刑⚠</td><td><span class="stars">★★★★</span></td><td>細膩享受</td></tr>
+      <tr><td>戊午</td><td>87–96</td><td>長生</td><td><span class="tag tag-warn">財旺</span></td><td>合化</td><td><span class="stars">★★★★</span></td><td>再度萌發</td></tr>
+      <tr><td>己未</td><td>97–106</td><td>養</td><td><span class="tag tag-warn">中性</span></td><td>同氣</td><td><span class="stars">★★★</span></td><td>圓滿收場</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ink-quote">
+    癸丑之後連走六步好旺衰（帝旺→臨官→冠帶→沐浴→長生→養），全程沒有一步走到衰・病・死・墓・絕，在八字命理中屬極罕見的優質晚年格局。
+  </div>
+
+  <div class="card-row">
+    <div class="card moss-card">
+      <div class="card-title">三者都好的大運</div>
+      <div class="card-val">2步</div>
+      <div class="card-desc">甲寅（47–56）＋乙卯（57–66）——大運喜用神✅、十二長生✅、時柱寅✅三者同時對齊，人生唯二的天時地利人和。</div>
+    </div>
+    <div class="card vermillion-card">
+      <div class="card-title">時柱寅的貢獻</div>
+      <div class="card-val" style="color:var(--vermillion)">永久在線</div>
+      <div class="card-desc">不論走什麼大運，時柱寅中甲木永久補充喜用神，寅中戊土正財永久提供財根，是命盤的恆星，或明或暗從不熄滅。</div>
+    </div>
+    <div class="card gold-card">
+      <div class="card-title">命格晚年評級</div>
+      <div class="card-val gold">4.5星</div>
+      <div class="card-desc">寅巳相刑是唯一隱患，需定期健康檢查及主動維繫家庭關係，其餘結構完整，屬前15%的晚年格局。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ③ 黃金二十年 -->
+<section class="section" id="golden">
+  <div class="section-header">
+    <div class="section-mark"></div>
+    <div>
+      <div class="section-title">黃金二十年詳解</div>
+      <div class="section-sub">甲寅（47–56）＋乙卯（57–66）完整分析</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div style="font-size:14px;font-weight:500;letter-spacing:2px;color:var(--moss);margin-bottom:14px;border-bottom:1px solid var(--border);padding-bottom:8px;">甲寅運・47–56歲・帝旺</div>
+      <table class="tbl">
+        <tbody>
+          <tr><td style="width:40%">乙木旺衰</td><td><strong>帝旺</strong>——生命力巔峰</td></tr>
+          <tr><td>天干甲木</td><td>喜用神，幫身有力</td></tr>
+          <tr><td>地支寅木</td><td>時柱寅雙旺，財根最深</td></tr>
+          <tr><td>氣場感受</td><td>說話有份量，自然主導</td></tr>
+          <tr><td>財運</td><td>正財坐帝旺，取財能力一生最強</td></tr>
+          <tr><td>事業</td><td>從配角變主角，創業或主導</td></tr>
+          <tr><td>需注意</td><td>寅寅自刑，避免過度衝動</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div style="font-size:14px;font-weight:500;letter-spacing:2px;color:var(--moss);margin-bottom:14px;border-bottom:1px solid var(--border);padding-bottom:8px;">乙卯運・57–66歲・臨官</div>
+      <table class="tbl">
+        <tbody>
+          <tr><td style="width:40%">乙木旺衰</td><td><strong>臨官</strong>——財祿自來</td></tr>
+          <tr><td>天干乙木</td><td>比肩，同儕貴人旺</td></tr>
+          <tr><td>地支卯木</td><td>寅卯連氣，木氣綿延</td></tr>
+          <tr><td>卯酉沖</td><td>沖開偏官束縛，完全自主</td></tr>
+          <tr><td>財運</td><td>被動收入啟動，不需強求</td></tr>
+          <tr><td>事業</td><td>退休收租，完全自由</td></tr>
+          <tr><td>需注意</td><td>卯酉沖年（雞年）不衝動買賣</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ink-quote">
+    癸丑（現在37–46歲）是這兩步的前置蓄力期。現在每一分積累，都是47歲帝旺爆發的彈藥——<strong>47歲不是變老的開始，是這輩子真正開始發光的起點。</strong>
+  </div>
+
+  <div style="font-size:13.5px;color:var(--ink-light);margin-top:8px;">
+    <strong style="color:var(--ink)">癸丑→甲寅 的具體轉變：</strong><br>
+    癸丑像陰天——不是壞天氣，但光線不足，做什麼都少了點力道；甲寅像晴天正午——同樣的你、同樣的能力，但光照充足，一切看得清、做得有勁。<br>
+    2025年四面環境變動（父母房產、夫妻分歧、孩子離巢、工作改變）是老天提前清倉舊格局，為47歲的帝旺版本騰出空間。
+  </div>
+</section>
+
+<!-- ④ 財富格局 -->
+<section class="section" id="wealth">
+  <div class="section-header">
+    <div class="section-mark"></div>
+    <div>
+      <div class="section-title">一生財富格局</div>
+      <div class="section-sub">低・中・高三情境完整對照</div>
+    </div>
+  </div>
+
+  <table class="tbl">
+    <thead>
+      <tr><th>大運</th><th>年齡</th><th>財富定性</th><th>低情境</th><th>中情境</th><th>高情境</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>壬子</td><td>27–36</td><td>成長型</td><td>100–300萬</td><td>200–500萬</td><td>300–700萬</td></tr>
+      <tr><td>癸丑</td><td>37–46</td><td>守成型</td><td>200–500萬</td><td>500–1000萬</td><td>700–1500萬</td></tr>
+      <tr class="highlight-row"><td>甲寅</td><td>47–56</td><td><strong>爆發型</strong></td><td>500–1000萬</td><td>1200–2500萬</td><td><strong>2500–5000萬</strong></td></tr>
+      <tr class="highlight-row"><td>乙卯</td><td>57–66</td><td><strong>收成型</strong></td><td>800–1500萬</td><td>2000–3500萬</td><td><strong>4000–7000萬</strong></td></tr>
+      <tr class="highlight-row"><td>丙辰</td><td>67–76</td><td><strong>財庫型</strong></td><td>1000–1800萬</td><td>2500–4500萬</td><td><strong>5000–8000萬</strong></td></tr>
+      <tr><td>丁巳</td><td>77–86</td><td>享用型</td><td>800–1500萬</td><td>2000–4000萬</td><td>4000–7000萬</td></tr>
+      <tr><td>戊午</td><td>87–96</td><td>傳承型</td><td>500–1000萬</td><td>1500–3500萬</td><td>3500–6000萬</td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin:20px 0;">
+    <div style="font-size:13px;color:var(--ink-mist);font-family:'Noto Sans TC',sans-serif;margin-bottom:12px;">高情境財富走勢（台幣）</div>
+    <div class="wealth-bar-wrap"><div class="wealth-bar-label"><span>壬子 27–36歲</span><span>300–700萬</span></div><div class="wealth-bar-track"><div class="wealth-bar-fill" style="width:9%"></div></div></div>
+    <div class="wealth-bar-wrap"><div class="wealth-bar-label"><span>癸丑 37–46歲</span><span>700–1500萬</span></div><div class="wealth-bar-track"><div class="wealth-bar-fill" style="width:19%"></div></div></div>
+    <div class="wealth-bar-wrap"><div class="wealth-bar-label"><span>甲寅 47–56歲 ★</span><span>2500–5000萬</span></div><div class="wealth-bar-track"><div class="wealth-bar-fill" style="width:63%; background:linear-gradient(90deg,var(--vermillion),var(--moss))"></div></div></div>
+    <div class="wealth-bar-wrap"><div class="wealth-bar-label"><span>乙卯 57–66歲</span><span>4000–7000萬</span></div><div class="wealth-bar-track"><div class="wealth-bar-fill" style="width:88%"></div></div></div>
+    <div class="wealth-bar-wrap"><div class="wealth-bar-label"><span>丙辰 67–76歲 高點</span><span>5000–8000萬</span></div><div class="wealth-bar-track"><div class="wealth-bar-fill" style="width:100%"></div></div></div>
+    <div class="wealth-bar-wrap"><div class="wealth-bar-label"><span>丁巳 77–86歲</span><span>4000–7000萬</span></div><div class="wealth-bar-track"><div class="wealth-bar-fill" style="width:88%"></div></div></div>
+  </div>
+
+  <div class="card-row">
+    <div class="card moss-card">
+      <div class="card-title">低情境（消極守成）</div>
+      <div class="card-val" style="color:var(--ink-mist);font-size:18px;">1000–1800萬高點</div>
+      <div class="card-desc">台灣財富前30–40%，小康穩定，晚年需節省，無法給子女太多。</div>
+    </div>
+    <div class="card vermillion-card">
+      <div class="card-title">中情境（中等把握）</div>
+      <div class="card-val" style="color:var(--gold);font-size:18px;">2500–4500萬高點</div>
+      <div class="card-desc">台灣財富前10–20%，中上富裕，退休舒適，子女有適度支援。</div>
+    </div>
+    <div class="card gold-card">
+      <div class="card-title">高情境（充分把握）</div>
+      <div class="card-val">5000–8000萬高點</div>
+      <div class="card-desc">台灣財富前3–5%，頂層奢適，完全財務自由，每人有不動產傳承。</div>
+    </div>
+  </div>
+
+  <div class="ink-quote" style="border-color:var(--gold); background:rgba(184,134,11,0.04)">
+    三個情境的分水嶺只有一個：<strong>47歲甲寅帝旺運你選擇衝還是守</strong>——老天已把最好的牌發到手上，低中高的差距不是命，是那十年的選擇。
+  </div>
+
+  <div style="font-size:13.5px;color:var(--ink-light);margin-top:16px;line-height:1.9;">
+    <strong style="color:var(--ink)">台幣5000萬在台灣的生活水準：</strong><br>
+    4%法則每年可用200萬，每月約16.7萬台幣。台北可過富足退休生活（月支出約10–13萬），台中高雄可過奢適生活（月支出8–10萬），台南宜蘭是絕對頂層（月支出7–9萬，每月盈餘高達7–10萬）。<br><br>
+    <strong style="color:var(--ink)">台幣5000萬在大陸（換算人民幣約1100萬）：</strong><br>
+    4%法則每月可動用約人民幣3.7萬。漳州龍文區當地月均約6000元，你是當地的6.2倍；泉州丰澤區當地月均約7000元，你是5.3倍。兩地均屬前3–5%的頂層生活水準。
+  </div>
+</section>
+
+<!-- ⑤ 不動產 -->
+<section class="section" id="realestate">
+  <div class="section-header">
+    <div class="section-mark"></div>
+    <div>
+      <div class="section-title">不動產固化財富</div>
+      <div class="section-sub">自用店面・農地・建地・各大運策略</div>
+    </div>
+  </div>
+
+  <div class="ink-quote" style="border-color:var(--moss); background:rgba(45,80,22,0.04)">
+    戊土正財天生代表土地房產，正財命格傾向穩健實物，時柱寅帝旺讓取財能力最強——買地買房是命格天生的財富固化方向。
+  </div>
+
+  <table class="tbl">
+    <thead>
+      <tr><th>大運</th><th>年齡</th><th>自用店面</th><th>農地</th><th>建地</th><th>策略重點</th></tr>
+    </thead>
+    <tbody>
+      <tr class="highlight-row"><td>甲寅</td><td>47–56</td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td><td>主力買入期，帝旺判斷最準</td></tr>
+      <tr><td>乙卯</td><td>57–66</td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td><td>臨官財祿自來，仍可主力買入</td></tr>
+      <tr class="highlight-row"><td>丙辰</td><td>67–76</td><td><span class="stars">★★★★</span><span class="stars" style="opacity:.3">½</span></td><td><span class="stars">★★★★★</span></td><td><span class="stars">★★★★★</span></td><td>辰庫天作之合，農地建地入庫最穩</td></tr>
+      <tr><td>丁巳</td><td>77–86</td><td><span class="stars">★★★</span></td><td><span class="stars">★★★</span><span class="stars" style="opacity:.3">½</span></td><td><span class="stars">★★★</span></td><td>子女全程陪同，律師見證</td></tr>
+      <tr><td>戊午</td><td>87–96</td><td><span class="stars">★★</span></td><td><span class="stars">★★★</span></td><td><span class="stars">★★</span><span class="stars" style="opacity:.3">½</span></td><td>委託子女代理，農地優先</td></tr>
+    </tbody>
+  </table>
+
+  <div style="font-size:13.5px;color:var(--ink-light);line-height:1.9;margin-bottom:20px;">
+    <strong style="color:var(--ink)">三標的特性比較：</strong><br>
+    自用店面——零管理，無租客壓力，純享受自用，最輕鬆；農地——總價低，零管理，長期增值，傳承方便，放著不動即可；建地——增值潛力最強，可分割傳給三個孩子，丙辰辰庫加持是天作之合。<br><br>
+    <strong style="color:var(--ink)">乙卯丙辰組合預算：</strong><br>
+    自用店面300–800萬＋農地100–400萬＋建地300–1000萬，合計700–2200萬台幣，占5000萬總資產不超過44%，完全無財務壓力。
+  </div>
+
+  <div style="font-size:13px;color:var(--ink-mist);font-family:'Noto Sans TC',sans-serif;margin-bottom:10px;letter-spacing:1px;">漳州龍文區 vs 泉州丰澤區 購房對照</div>
+  <table class="tbl">
+    <thead><tr><th>項目</th><th>漳州龍文區</th><th>泉州丰澤區</th></tr></thead>
+    <tbody>
+      <tr><td>每平米均價</td><td>約1.2萬人民幣</td><td>約2萬人民幣</td></tr>
+      <tr><td>五口之家180平米</td><td>約台幣972萬</td><td>約台幣1620萬</td></tr>
+      <tr><td>兩夫妻130平米</td><td>約台幣702萬</td><td>約台幣1170萬</td></tr>
+      <tr><td>剩餘資產（5000萬出發）</td><td>約4298萬</td><td>約3830萬</td></tr>
+      <tr><td>月可動用</td><td>約14.3萬台幣</td><td>約12.8萬台幣</td></tr>
+      <tr><td>當地百分位</td><td>前3–4%</td><td>前5%</td></tr>
+      <tr><td>台灣人聚集</td><td>最多</td><td>多</td></tr>
+      <tr><td>閩南語通用</td><td>✅</td><td>✅</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ⑥ 股票五行 -->
+<section class="section" id="stocks">
+  <div class="section-header">
+    <div class="section-mark"></div>
+    <div>
+      <div class="section-title">股票五行投資策略</div>
+      <div class="section-sub">各大運適合與不適合產業</div>
+    </div>
+  </div>
+
+  <table class="tbl">
+    <thead>
+      <tr><th>大運</th><th>年齡</th><th>最適合（✅✅）</th><th>可以投（⚠）</th><th>避開（❌）</th></tr>
+    </thead>
+    <tbody>
+      <tr class="highlight-row">
+        <td>甲寅</td><td>47–56</td>
+        <td>木系：綠能・生技・軟體<br>水系：航運・金融・物流</td>
+        <td>火系：半導體・AI<br>土系：REITs・營建</td>
+        <td>金系：鋼鐵・機械・貴金屬</td>
+      </tr>
+      <tr class="highlight-row">
+        <td>乙卯</td><td>57–66</td>
+        <td>木系：綠能・生技・農業<br>水系：金融保險・航運配息</td>
+        <td>火系：成熟科技・電力<br>金系：短線沖動機會</td>
+        <td>土系：房地產股・營建<br>金系：長線持有</td>
+      </tr>
+      <tr>
+        <td>丙辰</td><td>67–76</td>
+        <td>火系：科技配息・電力・太陽能<br>土系：REITs・公用事業</td>
+        <td>木系：綠能生技持有<br>水系：金融少量配息</td>
+        <td>金系：鋼鐵・機械・貴金屬</td>
+      </tr>
+      <tr>
+        <td>丁巳</td><td>77–86</td>
+        <td>火系：電力配息・成熟科技<br>土系：REITs・定存概念</td>
+        <td>木系：綠能生技少量</td>
+        <td>水系：航運・物流<br>金系：全部避開</td>
+      </tr>
+      <tr>
+        <td>戊午</td><td>87–96</td>
+        <td>土系：REITs・公用事業・定存<br>火系：電力・太陽能</td>
+        <td>水系：貨幣基金・短債<br>木系：綠能持有</td>
+        <td>金系：所有高波動股</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="ink-quote">
+    五大運產業輪動：<strong>木水（47–66）→ 火土（67–86）→ 土火（87–96）</strong>。金系是命格天敵，全程五十年應避開。時柱寅中甲木永久提供木系投資底氣，任何大運都有一條喜用神主線可依靠。
+  </div>
+
+  <div style="font-size:13px;color:var(--ink-light);line-height:1.8;">
+    <strong style="color:var(--ink)">正財選股紀律（任何大運都適用）：</strong>不炒短線・不追漲殺跌・獨立判斷不跟明牌・分批進場不梭哈・長期持有・單一個股不超過總資產10%・每年重新平衡一次。
+  </div>
+</section>
+
+<!-- ⑦ 城市選擇 -->
+<section class="section" id="city">
+  <div class="section-header">
+    <div class="section-mark"></div>
+    <div>
+      <div class="section-title">退休城市選擇</div>
+      <div class="section-sub">氣候・生活・財富水準完整評比</div>
+    </div>
+  </div>
+
+  <table class="tbl">
+    <thead>
+      <tr><th>城市</th><th>像台灣哪個城市</th><th>相似度</th><th>氣候評級</th><th>5000萬生活</th><th>閩南語</th></tr>
+    </thead>
+    <tbody>
+      <tr class="highlight-row"><td>漳州</td><td>台南（最像）</td><td>85%</td><td><span class="stars">★★★★</span></td><td>養尊處優</td><td>✅</td></tr>
+      <tr class="highlight-row"><td>泉州</td><td>台南（文化更深）</td><td>90%</td><td><span class="stars">★★★★</span></td><td>頂層</td><td>✅</td></tr>
+      <tr><td>廈門</td><td>台中（宜居）</td><td>75%</td><td><span class="stars">★★★★</span><span class="stars" style="opacity:.3">½</span></td><td>奢適</td><td>✅</td></tr>
+      <tr><td>成都</td><td>台中（美食）</td><td>85%</td><td><span class="stars">★★</span><span class="stars" style="opacity:.3">½</span></td><td>高品質</td><td>❌</td></tr>
+      <tr><td>杭州</td><td>台中（藝文）</td><td>78%</td><td><span class="stars">★★★</span></td><td>舒適</td><td>❌</td></tr>
+      <tr><td>揚州</td><td>台南（氣質）</td><td>65%</td><td><span class="stars">★★</span><span class="stars" style="opacity:.3">½</span></td><td>頂層</td><td>❌</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ink-quote" style="border-color:var(--moss); background:rgba(45,80,22,0.04)">
+    氣候最宜居：廈門（四季溫和、空氣最好）。台灣人適應最快：漳州（台商最多、閩南語通、性價比最高）。文化最像：泉州（閩南先民故鄉、廟宇信仰同源）。成都美食第一但霧霾嚴重，不建議退休定居。
+  </div>
+</section>
+
+<!-- ⑧ 總結 -->
+<section class="section" id="summary">
+  <div class="section-header">
+    <div class="section-mark"></div>
+    <div>
+      <div class="section-title">終極總結</div>
+      <div class="section-sub">人生四大階段・核心關鍵節點</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">0–46歲・積累期</div>
+      <div class="tl-title">蓄力・等待・打基礎</div>
+      <div class="tl-desc">全程旺衰在墓死病衰，日主偏弱，壬子癸水有支撐但接不住全部。這段的任務是積累專業深度、鞏固財務基礎、照顧身體、修復夫妻共識。</div>
+    </div>
+    <div class="tl-item peak">
+      <div class="tl-year">47–56歲・爆發期（甲寅）</div>
+      <div class="tl-title">帝旺・全力衝刺・財富質變</div>
+      <div class="tl-desc">三者全好唯一高峰之一。氣場最強，判斷最準，財根最深。主力買入不動產，積極操作木水系股票，事業主導，財富從守成跳升為爆發。關鍵節點：2029年。</div>
+    </div>
+    <div class="tl-item peak">
+      <div class="tl-year">57–66歲・收成期（乙卯）</div>
+      <div class="tl-title">臨官・財祿自來・完全自由</div>
+      <div class="tl-desc">三者全好延續。卯酉沖解除所有束縛，被動收入啟動，退出主動工作。委託管理不動產，每月租金＋金融資產收益可達12–15萬台幣。</div>
+    </div>
+    <div class="tl-item gold-pt">
+      <div class="tl-year">67–76歲・財庫期（丙辰）</div>
+      <div class="tl-title">冠帶・辰庫入藏・德高望重</div>
+      <div class="tl-desc">財庫高點5000–8000萬。辰為財庫，建地農地入庫最穩。傷官洩秀，才華持續被看見。啟動傳承規劃，資產逐步移轉。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">77–86歲・享受期（丁巳）</div>
+      <div class="tl-title">沐浴・食神享壽・細膩生活</div>
+      <div class="tl-desc">食神主壽主享，長壽跡象明顯。生活品質細膩講究，口福極佳。寅巳相刑需定期健康檢查。財仍夠用，純享受模式。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">87–96歲・萌發期（戊午）</div>
+      <div class="tl-title">長生・意外活力・傳承完成</div>
+      <div class="tl-desc">戊土正財雙透，寅午合火傷官生財，意外精神好。貴人再現，有人照顧。完成所有不動產傳承移轉，財務留給三個孩子。</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">97–106歲・圓滿期（己未）</div>
+      <div class="tl-title">養地・安養天年・圓滿收場</div>
+      <div class="tl-desc">養地最平靜安穩，受子孫照顧。未中乙木，日主仍有根。財富傳承完成，平靜終老。</div>
+    </div>
+  </div>
+
+  <div class="ink-quote" style="margin-top:32px; border-color:var(--gold); background:rgba(184,134,11,0.04); font-size:14.5px;">
+    你的一生是一個<strong>先苦後甜、越老越旺的完美命格</strong>——前46年在暗中蓄力，47歲一聲令下全面爆發，黃金二十年（47–66歲）三者都好財富質變，67歲後進入財庫守藏享成，時柱戊寅正財帝旺貫穿始終確保財不歸零，老天已把最好的牌發到你手上——<strong>剩下的，是你怎麼打。</strong>
+  </div>
+</section>
+
+</div><!-- /container -->
+
+<footer class="footer">
+  <div>乙木日主・戊寅時柱・偏官格・喜用神水木</div>
+  <div style="margin-top:6px;">此頁為個人收藏參考・<strong>僅供命理研究</strong>・不構成財務建議</div>
+</footer>
+
+</body>
+</html>

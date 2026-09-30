@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>女方八字命格完整報告</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+
+/* ── 色票 ── */
+/* 金：#B8860B（深）#D4A017（中）#F0C040（亮）#FEF9EC（淡底） */
+/* 藍：#1A5FAB（深）#2E7DD9（中）#6AAEF5（亮）#EBF4FF（淡底） */
+
+body{font-family:'Noto Sans TC',sans-serif;background:#F7F8FA;color:#1A1C24;min-height:100vh;padding:2rem 1rem}
+.page{max-width:720px;margin:0 auto}
+
+/* NAV */
+.nav{display:flex;gap:6px;margin-bottom:1.5rem;flex-wrap:wrap}
+.nav-btn{font-size:11px;padding:6px 14px;border-radius:99px;border:1px solid #D4A017;background:#fff;color:#B8860B;cursor:pointer;letter-spacing:.04em;transition:all .15s;font-family:'Noto Sans TC',sans-serif}
+.nav-btn:hover{background:#FEF9EC;color:#B8860B}
+.nav-btn.active{background:#D4A017;color:#fff;border-color:#D4A017}
+
+.tab-section{display:none}
+.tab-section.active{display:block}
+
+/* HERO */
+.hero{text-align:center;margin-bottom:2rem;padding:2rem 2rem 1.5rem;background:linear-gradient(135deg,#EBF4FF 0%,#FEF9EC 100%);border:1px solid #D4A017;border-radius:16px;position:relative;overflow:hidden}
+.hero::before{content:'乙';position:absolute;font-size:200px;font-weight:700;color:rgba(212,160,23,0.08);top:-40px;right:-20px;pointer-events:none;font-family:'Noto Serif TC',serif}
+.hero-tag{display:inline-block;font-size:10px;letter-spacing:.14em;color:#1A5FAB;border:1px solid #2E7DD9;padding:3px 14px;border-radius:99px;margin-bottom:1rem;background:#EBF4FF}
+.hero-title{font-size:26px;font-weight:700;color:#1A1C24;margin-bottom:6px;letter-spacing:.04em;font-family:'Noto Serif TC',serif}
+.hero-sub{font-size:12px;color:#5A6070;line-height:1.9}
+.hero-quote{margin-top:1rem;font-size:13px;color:#B8860B;border-top:1px solid #F0E0B0;padding-top:1rem;font-style:italic;line-height:1.75;font-family:'Noto Serif TC',serif}
+
+/* SECTION */
+.sec{margin-bottom:1.8rem}
+.sec-title{font-size:10px;font-weight:500;letter-spacing:.12em;color:#1A5FAB;text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:1.5px solid #2E7DD9;display:flex;align-items:center;gap:8px}
+.sec-title::before{content:'';display:block;width:3px;height:12px;background:#D4A017;border-radius:2px}
+
+/* PILLARS */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1.5rem}
+.pillar{background:#fff;border:1px solid #E0E4EC;border-radius:10px;padding:12px 6px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+.pillar.day{border:2px solid #D4A017;background:#FEF9EC}
+.p-label{font-size:9px;color:#8A92A0;margin-bottom:8px;letter-spacing:.06em}
+.p-gan{font-size:28px;font-weight:700;color:#1A1C24;margin-bottom:2px;font-family:'Noto Serif TC',serif}
+.pillar.day .p-gan{color:#1A5FAB}
+.p-zhi{font-size:22px;font-weight:500;color:#D4A017;margin-bottom:6px;font-family:'Noto Serif TC',serif}
+.p-sub{font-size:9px;color:#8A92A0;line-height:1.6}
+.pillar.day .p-label{color:#D4A017;font-weight:500}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+
+/* CARDS */
+.card{background:#fff;border:1px solid #E0E4EC;border-radius:10px;padding:12px 14px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.card.gold{border-color:#D4A017;border-left:3px solid #D4A017}
+.card.blue{border-color:#2E7DD9;border-left:3px solid #2E7DD9}
+.card.red{border-color:#E05050;border-left:3px solid #E05050}
+.card-label{font-size:9px;color:#8A92A0;margin-bottom:4px;letter-spacing:.04em;font-weight:500;text-transform:uppercase}
+.card-val{font-size:12px;color:#2A2E3A;line-height:1.7}
+
+/* WUXING */
+.wx-row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:1rem}
+.wx{border-radius:8px;padding:10px 4px;text-align:center;border:1px solid}
+.wx-fire{background:#FFF5F0;border-color:#FFBA9A}
+.wx-wood{background:#F2FAF0;border-color:#90CC70}
+.wx-water{background:#EBF4FF;border-color:#80B8F0}
+.wx-earth{background:#FEF9EC;border-color:#E8C860}
+.wx-metal{background:#F5F5F5;border-color:#C0C0C0}
+.wx-sym{font-size:22px;font-weight:700;margin-bottom:3px;font-family:'Noto Serif TC',serif}
+.wx-fire .wx-sym{color:#E05020}
+.wx-wood .wx-sym{color:#308820}
+.wx-water .wx-sym{color:#1A5FAB}
+.wx-earth .wx-sym{color:#B8860B}
+.wx-metal .wx-sym{color:#808080}
+.wx-rank{font-size:9px;margin-bottom:4px;font-weight:500}
+.wx-fire .wx-rank{color:#C04010}
+.wx-wood .wx-rank{color:#287018}
+.wx-water .wx-rank{color:#1550A0}
+.wx-earth .wx-rank{color:#A07000}
+.wx-metal .wx-rank{color:#606060}
+.wx-tag{font-size:8px;padding:2px 6px;border-radius:99px;display:inline-block;margin-bottom:4px}
+.wx-fire .wx-tag{background:#FFE8D8;color:#C04010}
+.wx-wood .wx-tag{background:#D8F0C8;color:#287018}
+.wx-water .wx-tag{background:#D0E8FF;color:#1550A0}
+.wx-earth .wx-tag{background:#FFF0C0;color:#A07000}
+.wx-metal .wx-tag{background:#E8E8E8;color:#606060}
+.wx-body{font-size:8px;color:#6A7080;line-height:1.6}
+
+/* TABLES */
+.dt,.it{width:100%;border-collapse:collapse;font-size:11px}
+.dt th,.it th{background:#F0F4FA;color:#1A5FAB;padding:8px 10px;text-align:left;font-size:9px;font-weight:500;letter-spacing:.06em;border-bottom:1.5px solid #2E7DD9}
+.dt td,.it td{padding:8px 10px;border-bottom:1px solid #EEF0F4;color:#2A2E3A;vertical-align:top;line-height:1.55}
+.dt tr.cur td{background:#FEF9EC;font-weight:500}
+.dt tr.best td{background:#EBF4FF}
+.it tr:hover td{background:#F8FAFE}
+.run-b{display:inline-block;font-size:8px;padding:1px 5px;border-radius:99px;margin-left:4px;vertical-align:middle}
+.rb-now{background:#D8F0C8;color:#287018}
+.rb-best{background:#D0E8FF;color:#1A5FAB}
+
+/* TAGS */
+.tag-g{font-size:9px;padding:1px 7px;border-radius:99px;font-weight:500}
+.tg-best{background:#D8F0C8;color:#287018}
+.tg-ok{background:#D0E8FF;color:#1A5FAB}
+.tg-caut{background:#FFF0C0;color:#A07000}
+.tg-bad{background:#FFE0E0;color:#C03030}
+
+/* WEALTH */
+.w-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:1rem}
+.w-card{background:#fff;border:1px solid #E0E4EC;border-radius:8px;padding:12px 8px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.w-card.peak{border:2px solid #D4A017;background:#FEF9EC}
+.w-period{font-size:9px;color:#8A92A0;margin-bottom:6px;line-height:1.5}
+.w-amt{font-size:12px;font-weight:700;color:#B8860B;margin-bottom:3px}
+.w-card.peak .w-amt{font-size:14px;color:#D4A017}
+.w-type{font-size:8px;color:#A0A8B8}
+
+/* REAL ESTATE */
+.re-tier{border-radius:8px;padding:10px 14px;margin-bottom:6px;border:1px solid}
+.re-best{background:#F2FAF0;border-color:#90CC70}
+.re-ok{background:#EBF4FF;border-color:#80B8F0}
+.re-caut{background:#FFFBEC;border-color:#E8C860}
+.re-bad{background:#FFF5F5;border-color:#FFAAAA}
+.re-tier-head{font-size:11px;font-weight:500;margin-bottom:5px}
+.re-best .re-tier-head{color:#287018}
+.re-ok .re-tier-head{color:#1A5FAB}
+.re-caut .re-tier-head{color:#A07000}
+.re-bad .re-tier-head{color:#C03030}
+.re-tier-body{font-size:10px;color:#4A5060;line-height:1.7}
+
+/* CHAR */
+.char-item{display:flex;gap:10px;padding:12px 14px;background:#fff;border:1px solid #E0E4EC;border-radius:8px;margin-bottom:6px;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+.char-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.char-title{font-size:11px;font-weight:500;color:#1A1C24;margin-bottom:3px}
+.char-body{font-size:10px;color:#4A5060;line-height:1.65}
+
+/* KEYPOINTS */
+.kp{background:#fff;border:1px solid #D4A017;border-radius:10px;padding:1rem 1.25rem;box-shadow:0 1px 4px rgba(212,160,23,0.1)}
+.kp-item{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid #F0F0F0;font-size:11px;color:#2A2E3A;line-height:1.7}
+.kp-item:last-child{border-bottom:none;padding-bottom:0}
+.kp-num{color:#D4A017;font-weight:700;flex-shrink:0;min-width:22px;font-size:13px}
+
+/* LOGIC / WARN BOX */
+.logic{background:#F2FAF0;border-left:3px solid #50A830;padding:8px 12px;border-radius:0 6px 6px 0;margin:8px 0}
+.logic-lbl{font-size:9px;font-weight:500;color:#287018;margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.logic-body{font-size:10px;color:#2A5020;line-height:1.65}
+.warn{background:#FFF5EC;border-left:3px solid #E08030;padding:8px 12px;border-radius:0 6px 6px 0;margin:8px 0}
+.warn-lbl{font-size:9px;font-weight:500;color:#C06010;margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em}
+.warn-body{font-size:10px;color:#704020;line-height:1.65}
+
+/* RULE BOX */
+.rule-box{background:#F0F4FA;border-radius:8px;padding:12px 14px;margin:8px 0;border:1px solid #D0DCEE}
+.rule-title{font-size:11px;font-weight:500;color:#1A1C24;margin-bottom:6px}
+.rule-body{font-size:10px;color:#3A4050;line-height:1.8}
+
+/* STOCK CHIP */
+.stock-chip{background:#F0F4FA;border:1px solid #D0DCEE;border-radius:6px;padding:6px 10px;margin:3px;display:inline-block}
+.sc-name{font-size:11px;color:#1A1C24;font-weight:500}
+.sc-code{font-size:9px;color:#8A92A0;margin-top:1px}
+
+/* BAR */
+.bar-row{display:flex;align-items:center;gap:8px;margin:6px 0}
+.bar-key{font-size:10px;color:#5A6070;min-width:60px}
+.bar-bg{flex:1;height:6px;background:#EEF0F4;border-radius:99px;overflow:hidden}
+.bar-fill{height:100%;border-radius:99px}
+.bar-val{font-size:10px;color:#5A6070;min-width:44px;text-align:right}
+
+/* BADGE */
+.badge{display:inline-block;font-size:9px;font-weight:500;padding:2px 9px;border-radius:99px;margin-bottom:6px}
+.b-gold{background:#FEF9EC;color:#B8860B;border:1px solid #D4A017}
+.b-blue{background:#EBF4FF;color:#1A5FAB;border:1px solid #2E7DD9}
+.b-green{background:#F0FAF0;color:#287018;border:1px solid #50A830}
+.b-red{background:#FFF5F5;color:#C03030;border:1px solid #E05050}
+
+/* FOOTER */
+.footer{text-align:center;margin-top:2.5rem;padding-top:1rem;border-top:1px solid #E0E4EC;font-size:10px;color:#A0A8B8;line-height:1.9}
+.branch-nav{
+  --nav-bg:#FFFFFF; --nav-border:#E3E1D8; --nav-text:#1F1E1B;
+  --nav-text-dim:#6B6960; --nav-current-bg:#F1EFE8;
+}
+@media (prefers-color-scheme: dark){
+  .branch-nav{
+    --nav-bg:#242219; --nav-border:#3A3830; --nav-text:#F2F1EA;
+    --nav-text-dim:#B4B2A9; --nav-current-bg:#1D1C15;
+  }
+}
+.branch-nav{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;
+  font-size:13px; background:var(--nav-bg); border-right:0.5px solid var(--nav-border);
+  padding:20px 14px; box-sizing:border-box;
+}
+.branch-nav .branch-group{margin-bottom:18px;}
+.branch-nav .branch-title{display:flex;align-items:center;gap:6px;font-weight:600;color:var(--nav-text);margin-bottom:8px;cursor:pointer;user-select:none;}
+.branch-nav .branch-title .caret{margin-left:auto;font-size:10px;color:var(--nav-text-dim);transition:transform .15s ease;}
+.branch-nav .branch-group.collapsed .branch-title .caret{transform:rotate(-90deg);}
+.branch-nav .branch-group.collapsed .branch-items{display:none;}
+.branch-nav .branch-items{list-style:none;margin:0;padding:0;border-left:1px solid var(--nav-border);margin-left:6px;}
+.branch-nav .branch-items li{position:relative;padding:5px 0 5px 16px;}
+.branch-nav .branch-items li::before{content:"";position:absolute;left:-1px;top:14px;width:12px;height:1px;background:var(--nav-border);}
+.branch-nav .branch-items a{color:var(--nav-text-dim);text-decoration:none;display:block;padding:4px 8px;border-radius:6px;}
+.branch-nav .branch-items a:hover{background:var(--nav-current-bg);}
+.branch-nav .branch-items a.current{color:var(--nav-text);font-weight:600;background:var(--nav-current-bg);}
+@media (min-width:761px){
+  .branch-nav{position:fixed;top:0;left:0;bottom:0;width:190px;overflow-y:auto;z-index:100;}
+  body{padding-left:190px;}
+}
+@media (max-width:760px){
+  .branch-nav{border-right:none;border-bottom:0.5px solid var(--nav-border);padding:14px;position:static;}
+  .branch-nav .branch-group{margin-bottom:10px;}
+  .branch-nav .branch-group.collapsed .branch-items{display:flex;}
+  .branch-nav .branch-title .caret{display:none;}
+  .branch-nav .branch-items{display:flex;flex-wrap:wrap;gap:4px;border-left:none;margin-left:0;}
+  .branch-nav .branch-items li{padding:0;}
+  .branch-nav .branch-items li::before{display:none;}
+  .branch-nav .branch-items a{padding:4px 10px;border:0.5px solid var(--nav-border);border-radius:14px;}
+}
+</style>
+</head>
+<body>
+<nav class="branch-nav">
+  <div class="branch-group">
+    <div class="branch-title"><span class="icon">📁</span>機器人學習主線<span class="caret">▾</span></div>
+    <ul class="branch-items">
+      <li><a href="overview.html">四年計畫總覽</a></li>
+      <li><a href="index.html">週進度追蹤器</a></li>
+    </ul>
+  </div>
+  <div class="branch-group">
+    <div class="branch-title"><span class="icon">📁</span>英文學習支線<span class="caret">▾</span></div>
+    <ul class="branch-items">
+      <li><a href="english-overview.html">大綱總覽</a></li>
+      <li><a href="english-log.html">24週日誌</a></li>
+    </ul>
+  </div>
+  <div class="branch-group">
+    <div class="branch-title"><span class="icon">📁</span>創業戰情室<span class="caret">▾</span></div>
+    <ul class="branch-items">
+      <li><a href="business-war-room.html">四年行動作戰室</a></li>
+    </ul>
+  </div>
+  <div class="branch-group">
+    <div class="branch-title"><span class="icon">📁</span>老婆支線<span class="caret">▾</span></div>
+    <ul class="branch-items">
+      <li><a href="bazi_summary_v3.html" class="current">老婆資料區</a></li>
+    </ul>
+  </div>
+</nav>
+<script>
+document.querySelectorAll('.branch-nav .branch-title').forEach(function(t){
+  t.addEventListener('click', function(){
+    t.closest('.branch-group').classList.toggle('collapsed');
+  });
+});
+</script>
+
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">女方八字命格完整報告</div>
+  <div class="hero-title">乙木日主・寒冬花木格</div>
+  <div class="hero-sub">
+    1982年1月22日 22:00（亥時）<br>
+    農曆辛酉年十二月廿八日<br>
+    身弱・七殺格・用神丁火
+  </div>
+  <div class="hero-quote">「她是一株寒冬裡的乙木花草，一生都在向陽而生——丙午運那道火終於來了，那十年是她人生真正的春天。」</div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button class="nav-btn active" onclick="showTab('tab1',this)">命盤基礎</button>
+  <button class="nav-btn" onclick="showTab('tab2',this)">大運分析</button>
+  <button class="nav-btn" onclick="showTab('tab3',this)">五行投資</button>
+  <button class="nav-btn" onclick="showTab('tab4',this)">台股方向</button>
+  <button class="nav-btn" onclick="showTab('tab5',this)">不動產</button>
+  <button class="nav-btn" onclick="showTab('tab6',this)">財富推算</button>
+  <button class="nav-btn" onclick="showTab('tab7',this)">性格貴人</button>
+  <button class="nav-btn" onclick="showTab('tab8',this)">七大核心</button>
+</div>
+
+<!-- TAB 1 -->
+<div id="tab1" class="tab-section active">
+  <div class="sec">
+    <div class="sec-title">四柱命盤</div>
+    <div class="pillars">
+      <div class="pillar"><div class="p-label">年柱</div><div class="p-gan">辛</div><div class="p-zhi">酉</div><div class="p-sub">金・七殺<br>金・七殺</div></div>
+      <div class="pillar"><div class="p-label">月柱</div><div class="p-gan">辛</div><div class="p-zhi">丑</div><div class="p-sub">金・七殺<br>濕土（癸辛己）</div></div>
+      <div class="pillar day"><div class="p-label">日柱・日主</div><div class="p-gan">乙</div><div class="p-zhi">巳</div><div class="p-sub">木・日主<br>火（丙庚戊）</div></div>
+      <div class="pillar"><div class="p-label">時柱</div><div class="p-gan">丁</div><div class="p-zhi">亥</div><div class="p-sub">火・正印<br>水（壬甲）</div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">命格核心特質</div>
+    <div class="g2" style="margin-bottom:8px">
+      <div class="card gold"><div class="card-label">格局</div><div class="card-val">七殺格<br>辛酉丑半合金局，七殺極旺</div></div>
+      <div class="card gold"><div class="card-label">日主強弱</div><div class="card-val">身弱<br>丑月寒冬，根氣薄，需火暖木</div></div>
+      <div class="card"><div class="card-label">命局最大問題</div><div class="card-val">寒濕過重（丑濕土＋亥水），巳亥相沖情緒波動，貴人星不穩</div></div>
+      <div class="card"><div class="card-label">命局最大優點</div><div class="card-val">食傷旺（巳火），創意力強，憑才華與實力賺錢</div></div>
+    </div>
+    <div class="card"><div class="card-label">合沖刑害</div><div class="card-val">巳亥相沖（日支沖時支）→ 情緒易波動，婚姻有壓力，正印貴人星被沖<br>酉丑半合金局（年支月支）→ 七殺結黨，壓制日主更甚，需丁火制化</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">五行強弱分析</div>
+    <div class="bar-row"><span class="bar-key">木（日主）</span><div class="bar-bg"><div class="bar-fill" style="width:18%;background:#50A830"></div></div><span class="bar-val">弱 18%</span></div>
+    <div class="bar-row"><span class="bar-key">火（用神）</span><div class="bar-bg"><div class="bar-fill" style="width:28%;background:#E07040"></div></div><span class="bar-val">中 28%</span></div>
+    <div class="bar-row"><span class="bar-key">土（財星）</span><div class="bar-bg"><div class="bar-fill" style="width:20%;background:#D4A017"></div></div><span class="bar-val">中 20%</span></div>
+    <div class="bar-row"><span class="bar-key">金（忌神）</span><div class="bar-bg"><div class="bar-fill" style="width:58%;background:#9090A0"></div></div><span class="bar-val">旺 58%</span></div>
+    <div class="bar-row"><span class="bar-key">水（謹慎）</span><div class="bar-bg"><div class="bar-fill" style="width:22%;background:#2E7DD9"></div></div><span class="bar-val">中 22%</span></div>
+    <div class="warn" style="margin-top:10px"><div class="warn-lbl">水的特別說明</div><div class="warn-body">命局亥水＋丑中癸水已足，水非真正喜用。再補水則寒濕更重，根系泡爛。水屬產業僅可少量，過則有害。</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">用神喜忌判定</div>
+    <table class="it">
+      <tr><th>角色</th><th>五行</th><th>原因</th><th>投資態度</th></tr>
+      <tr><td>用神</td><td style="color:#C04010;font-weight:500">火（丁丙）</td><td>直接暖木制金，命格最需要的</td><td><span class="tag-g tg-best">核心主軸</span></td></tr>
+      <tr><td>喜神</td><td style="color:#287018;font-weight:500">木（甲乙）</td><td>比劫扶身，增強判斷力與膽識</td><td><span class="tag-g tg-ok">積極配置</span></td></tr>
+      <tr><td>閒神</td><td style="color:#A07000;font-weight:500">燥土（戌未）</td><td>含火氣略有用，但量不可重</td><td><span class="tag-g tg-caut">極少量10%</span></td></tr>
+      <tr><td>仇神</td><td style="color:#1A5FAB;font-weight:500">水（壬癸）</td><td>命局已足，再加則寒濕傷根</td><td><span class="tag-g tg-caut">少量15%內</span></td></tr>
+      <tr><td>忌神</td><td style="color:#606060;font-weight:500">金（庚辛）</td><td>七殺剋日主，壓制最重</td><td><span class="tag-g tg-bad">全程迴避</span></td></tr>
+      <tr><td>忌神</td><td style="color:#A07000;font-weight:500">濕土（丑辰）</td><td>寒濕傷根，命局丑已夠重</td><td><span class="tag-g tg-bad">完全迴避</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 2 -->
+<div id="tab2" class="tab-section">
+  <div class="sec">
+    <div class="sec-title">順排大運（女命陽年順行）</div>
+    <table class="dt">
+      <tr><th>大運</th><th>年齡</th><th>西曆</th><th>財運</th><th>五行氣場</th><th>重點</th></tr>
+      <tr><td>壬子</td><td>5–14</td><td>1987–96</td><td>★★☆☆☆</td><td>水旺</td><td>學習期，水雖生木但命局已寒</td></tr>
+      <tr><td>癸丑</td><td>15–24</td><td>1997–06</td><td>★★☆☆☆</td><td>水濕土</td><td>感情萌動，丑上加丑寒濕最重</td></tr>
+      <tr><td>甲寅</td><td>25–34</td><td>2007–16</td><td>★★★☆☆</td><td>木旺</td><td>比劫幫身，事業起步，婚育期</td></tr>
+      <tr class="cur"><td>乙巳 <span class="run-b rb-now">當前</span></td><td>35–44</td><td>2017–26</td><td>★★★★☆</td><td>木火並見</td><td>食傷旺，中長線成長股為主</td></tr>
+      <tr class="best"><td>丙午 <span class="run-b rb-best">最強</span></td><td>45–54</td><td>2027–36</td><td>★★★★★</td><td>火極旺</td><td>人生財富高峰，全力押火屬</td></tr>
+      <tr><td>丁未</td><td>55–64</td><td>2037–46</td><td>★★★★☆</td><td>火燥土</td><td>守成收息，ETF高股息為主</td></tr>
+      <tr><td>戊申</td><td>65–74</td><td>2047–56</td><td>★★☆☆☆</td><td>土金</td><td>忌神回升，轉向保守防守</td></tr>
+    </table>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">三大重要大運詳解</div>
+    <div class="card gold" style="margin-bottom:10px">
+      <div class="badge b-gold">當前 乙巳運 2017–2026</div>
+      <div class="card-label">氣場特質</div>
+      <div class="card-val" style="margin-bottom:8px">乙木比肩助身，巳火食傷旺，食傷生財結構。財源憑實力，非投機運。</div>
+      <div class="card-label">投資策略</div>
+      <div class="card-val" style="margin-bottom:8px">中長線持有火木屬成長股。不宜重倉槓桿，乙木根薄承受力有限。</div>
+      <div class="card-label">2026年關鍵任務</div>
+      <div class="card-val">換倉準備——把水屬、土屬持股逐步換出，建立丙午運主題倉位。</div>
+    </div>
+    <div class="card blue" style="margin-bottom:10px">
+      <div class="badge b-blue">下一段 丙午運 2027–2036 ★人生財富高峰</div>
+      <div class="card-label">氣場特質</div>
+      <div class="card-val" style="margin-bottom:8px">丙火傷官生財，午火強旺，與命局巳趨近火局，金局壓制全解。乙木終得暖根，財星完全為我所用。</div>
+      <div class="card-label">投資策略</div>
+      <div class="card-val" style="margin-bottom:8px">火屬產業比重提升至65%，可承受較高波動。水屬產業此運壓低至5%以下（火旺再加水反而攪亂用神）。</div>
+      <div class="card-label">性格改變</div>
+      <div class="card-val">七殺被制，壓力解除，從乙巳運的任性掙扎轉變為沉穩從容。</div>
+    </div>
+    <div class="card" style="margin-bottom:10px">
+      <div class="badge b-gold">後段 丁未運 2037–2046</div>
+      <div class="card-label">氣場特質</div>
+      <div class="card-val" style="margin-bottom:8px">丁火正印護木，守護為主。未土含乙丁，調候尚可。</div>
+      <div class="card-label">投資策略</div>
+      <div class="card-val">轉防守——高股息ETF取代個股，租金收息為主，保護丙午運積累的財富。</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">兩個最關鍵時間點</div>
+    <div class="g2">
+      <div class="card gold"><div class="card-label">① 2026年下半年</div><div class="card-val">換倉佈局窗口。乙巳運結束前提前建立丙午運主題倉位。這步做了，入運後財富曲線更陡；沒做要等入運後追，少賺一段。</div></div>
+      <div class="card gold"><div class="card-label">② 2033–2035年</div><div class="card-val">高點固化窗口。丙午運後段財運極旺，把部分股市獲利轉移至不動產固化。「財旺要固化」，不能貪心全留股市。</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 3 -->
+<div id="tab3" class="tab-section">
+  <div class="sec">
+    <div class="sec-title">五行投資優先順序（修正版）</div>
+    <div class="wx-row">
+      <div class="wx wx-fire"><div class="wx-sym">火</div><div class="wx-rank">第一</div><div class="wx-tag">核心用神</div><div class="wx-body">暖木制金<br>半導體・AI<br>能源・綠電</div></div>
+      <div class="wx wx-wood"><div class="wx-sym">木</div><div class="wx-rank">第二</div><div class="wx-tag">扶身配置</div><div class="wx-body">比劫增膽<br>生技・醫療<br>農業・食品</div></div>
+      <div class="wx wx-water"><div class="wx-sym">水</div><div class="wx-rank">第三</div><div class="wx-tag">少量謹慎</div><div class="wx-body">命局已足<br>金融波段<br>15%以內</div></div>
+      <div class="wx wx-earth"><div class="wx-sym">燥土</div><div class="wx-rank">第四</div><div class="wx-tag">極少量</div><div class="wx-body">戌未含火<br>旺區店面<br>10%以內</div></div>
+      <div class="wx wx-metal"><div class="wx-sym">金</div><div class="wx-rank">第五</div><div class="wx-tag">全程忌</div><div class="wx-body">七殺剋木<br>鋼鐵礦業<br>完全迴避</div></div>
+    </div>
+    <div class="warn"><div class="warn-lbl">水的重要修正</div><div class="warn-body">水本來是喜用，但命局亥水＋丑中癸水已過量。再補水是「根系泡爛」而非「生木」。丙午運時水更要壓到最低（5%以下），因火旺再加水反而剋用神。</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">各大運建議倉位比例</div>
+    <div class="card gold" style="margin-bottom:8px">
+      <div class="badge b-gold">乙巳運（當前 2017–2026）</div>
+      <div class="bar-row"><span class="bar-key" style="color:#C04010">火屬</span><div class="bar-bg"><div class="bar-fill" style="width:50%;background:#E07040"></div></div><span class="bar-val">50%</span></div>
+      <div class="bar-row"><span class="bar-key" style="color:#287018">木屬</span><div class="bar-bg"><div class="bar-fill" style="width:25%;background:#50A830"></div></div><span class="bar-val">25%</span></div>
+      <div class="bar-row"><span class="bar-key" style="color:#1A5FAB">水屬</span><div class="bar-bg"><div class="bar-fill" style="width:10%;background:#2E7DD9"></div></div><span class="bar-val">10%以內</span></div>
+      <div class="bar-row"><span class="bar-key" style="color:#A07000">燥土</span><div class="bar-bg"><div class="bar-fill" style="width:10%;background:#D4A017"></div></div><span class="bar-val">10%以內</span></div>
+      <div class="bar-row"><span class="bar-key" style="color:#606060">金屬</span><div class="bar-bg"><div class="bar-fill" style="width:5%;background:#9090A0"></div></div><span class="bar-val">迴避</span></div>
+    </div>
+    <div class="card blue" style="margin-bottom:8px">
+      <div class="badge b-blue">丙午運（2027–2036）★最強財運</div>
+      <div class="bar-row"><span class="bar-key" style="color:#C04010">火屬</span><div class="bar-bg"><div class="bar-fill" style="width:65%;background:#E07040"></div></div><span class="bar-val">65%</span></div>
+      <div class="bar-row"><span class="bar-key" style="color:#287018">木屬</span><div class="bar-bg"><div class="bar-fill" style="width:20%;background:#50A830"></div></div><span class="bar-val">20%</span></div>
+      <div class="bar-row"><span class="bar-key" style="color:#1A5FAB">水屬</span><div class="bar-bg"><div class="bar-fill" style="width:8%;background:#2E7DD9"></div></div><span class="bar-val">5–8%</span></div>
+      <div class="bar-row"><span class="bar-key" style="color:#A07000">燥土</span><div class="bar-bg"><div class="bar-fill" style="width:5%;background:#D4A017"></div></div><span class="bar-val">5%以內</span></div>
+      <div class="bar-row"><span class="bar-key" style="color:#606060">金屬</span><div class="bar-bg"><div class="bar-fill" style="width:2%;background:#9090A0"></div></div><span class="bar-val">迴避</span></div>
+    </div>
+    <div class="card" style="margin-bottom:8px">
+      <div class="badge b-gold">丁未運（2037–2046）守成</div>
+      <div class="bar-row"><span class="bar-key" style="color:#C04010">火屬</span><div class="bar-bg"><div class="bar-fill" style="width:40%;background:#E07040"></div></div><span class="bar-val">40%</span></div>
+      <div class="bar-row"><span class="bar-key" style="color:#287018">木屬</span><div class="bar-bg"><div class="bar-fill" style="width:30%;background:#50A830"></div></div><span class="bar-val">30%</span></div>
+      <div class="bar-row"><span class="bar-key" style="color:#1A5FAB">水屬</span><div class="bar-bg"><div class="bar-fill" style="width:15%;background:#2E7DD9"></div></div><span class="bar-val">15%</span></div>
+      <div class="bar-row"><span class="bar-key" style="color:#A07000">燥土</span><div class="bar-bg"><div class="bar-fill" style="width:10%;background:#D4A017"></div></div><span class="bar-val">10%</span></div>
+      <div class="bar-row"><span class="bar-key" style="color:#606060">金屬</span><div class="bar-bg"><div class="bar-fill" style="width:5%;background:#9090A0"></div></div><span class="bar-val">迴避</span></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">五行產業對應速查</div>
+    <table class="it">
+      <tr><th>五行</th><th>對乙木</th><th>對應產業</th><th>典型例子</th></tr>
+      <tr><td style="color:#C04010;font-weight:500">火</td><td><span class="tag-g tg-best">核心</span></td><td>半導體、AI應用、能源轉型、電子製造</td><td>台積電、聯發科、緯穎、台達電</td></tr>
+      <tr><td style="color:#287018;font-weight:500">木</td><td><span class="tag-g tg-ok">扶身</span></td><td>生技醫療、農業食品、綠建材</td><td>生技股、食品股、農業概念</td></tr>
+      <tr><td style="color:#1A5FAB;font-weight:500">水</td><td><span class="tag-g tg-caut">少量</span></td><td>金融服務、海運物流、雲端軟體</td><td>長榮（波段）、金融股（少量）</td></tr>
+      <tr><td style="color:#A07000;font-weight:500">燥土</td><td><span class="tag-g tg-caut">極少</span></td><td>高溫製程、太陽能、旺地商業</td><td>太陽能板製造、旺區REITs</td></tr>
+      <tr><td style="color:#606060;font-weight:500">金</td><td><span class="tag-g tg-bad">忌神</span></td><td>鋼鐵、銅鋁、礦業、傳統機械</td><td>中鋼、銅礦股——全程迴避</td></tr>
+    </table>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">投資線別建議</div>
+    <table class="it">
+      <tr><th>線別</th><th>時間區間</th><th>適合度</th><th>原因</th></tr>
+      <tr><td>超短線・當沖</td><td>當天</td><td><span class="tag-g tg-bad">完全不適合</span></td><td>巳亥沖情緒波動，當沖最傷判斷力</td></tr>
+      <tr><td>短線</td><td>1天–1個月</td><td><span class="tag-g tg-bad">不建議</span></td><td>乙木根薄，頻繁操作消耗判斷力</td></tr>
+      <tr><td>中線・波段</td><td>1個月–1年</td><td><span class="tag-g tg-caut">部分適合</span></td><td>海運、景氣循環股可波段，需設停利</td></tr>
+      <tr><td>長線</td><td>1–3年</td><td><span class="tag-g tg-ok">適合</span></td><td>AI成長股、聯發科、鴻海等</td></tr>
+      <tr><td>超長線</td><td>3年以上</td><td><span class="tag-g tg-best">最適合</span></td><td>台積電、ETF——種樹型投資</td></tr>
+    </table>
+    <div class="logic" style="margin-top:8px"><div class="logic-lbl">命理邏輯</div><div class="logic-body">乙木是花草藤木，生長需要時間。她的命格是「種樹型」——種下去、澆水、等它長大，在對的季節（丙午運）收割。急進反而傷根。</div></div>
+  </div>
+</div>
+
+<!-- TAB 4 -->
+<div id="tab4" class="tab-section">
+  <div class="sec">
+    <div class="sec-title">乙巳運（當前 2025–2026）台股方向</div>
+    <div class="card gold" style="margin-bottom:10px">
+      <div class="badge b-gold">核心個股（火木屬）</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">
+        <div class="stock-chip"><div class="sc-name">台積電 2330</div><div class="sc-code">火屬・最核心・超長線</div></div>
+        <div class="stock-chip"><div class="sc-name">聯發科 2454</div><div class="sc-code">AI晶片・長線</div></div>
+        <div class="stock-chip"><div class="sc-name">緯穎 6669</div><div class="sc-code">AI伺服器・成長</div></div>
+        <div class="stock-chip"><div class="sc-name">台達電 2308</div><div class="sc-code">電源綠能・火木</div></div>
+        <div class="stock-chip"><div class="sc-name">生技醫療</div><div class="sc-code">木屬・中長線</div></div>
+      </div>
+      <div class="badge b-blue">波段個股（水屬・少量）</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">
+        <div class="stock-chip"><div class="sc-name">長榮 2603</div><div class="sc-code">海運波段・設停利</div></div>
+        <div class="stock-chip"><div class="sc-name">陽明 2609</div><div class="sc-code">景氣循環・短波段</div></div>
+      </div>
+      <div class="badge b-green">ETF配置</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        <div class="stock-chip"><div class="sc-name">0050</div><div class="sc-code">台灣50・壓艙石</div></div>
+        <div class="stock-chip"><div class="sc-name">00878</div><div class="sc-code">國泰永續高息</div></div>
+        <div class="stock-chip"><div class="sc-name">00692</div><div class="sc-code">富邦公司治理</div></div>
+      </div>
+    </div>
+    <div class="card red"><div class="badge b-red">此運迴避</div><div class="card-val">傳統鋼鐵（中鋼2002）・銅鋁礦業・金礦股・高槓桿ETF（00631L）・當沖超短線</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">丙午運（2027–2036）台股方向</div>
+    <div class="card blue" style="margin-bottom:10px">
+      <div class="badge b-blue">核心個股（火屬集中押注）</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">
+        <div class="stock-chip"><div class="sc-name">台積電 2330</div><div class="sc-code">繼續加碼・核心</div></div>
+        <div class="stock-chip"><div class="sc-name">鴻海 2317</div><div class="sc-code">AI伺服器・轉型</div></div>
+        <div class="stock-chip"><div class="sc-name">台達電 2308</div><div class="sc-code">綠能電源</div></div>
+        <div class="stock-chip"><div class="sc-name">世芯-KY 3661</div><div class="sc-code">IC設計・高成長</div></div>
+        <div class="stock-chip"><div class="sc-name">上緯投控 3708</div><div class="sc-code">離岸風電</div></div>
+      </div>
+      <div class="badge b-green">ETF配置</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        <div class="stock-chip"><div class="sc-name">00881</div><div class="sc-code">中信台灣AI</div></div>
+        <div class="stock-chip"><div class="sc-name">00891</div><div class="sc-code">中信關鍵半導體</div></div>
+        <div class="stock-chip"><div class="sc-name">00929</div><div class="sc-code">復華科技優息</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">丁未運（2037+）守成配置</div>
+    <div class="card">
+      <div class="badge b-gold">防禦型ETF為主</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        <div class="stock-chip"><div class="sc-name">00878</div><div class="sc-code">國泰永續高息</div></div>
+        <div class="stock-chip"><div class="sc-name">00919</div><div class="sc-code">群益台灣精選高息</div></div>
+        <div class="stock-chip"><div class="sc-name">00929</div><div class="sc-code">復華科技優息</div></div>
+        <div class="stock-chip"><div class="sc-name">政府公債ETF</div><div class="sc-code">穩定收息</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 5 -->
+<div id="tab5" class="tab-section">
+  <div class="sec">
+    <div class="sec-title">燥土 vs 濕土判斷原則</div>
+    <div class="g2" style="margin-bottom:10px">
+      <div class="card" style="border-color:#90CC70;border-left:3px solid #50A830">
+        <div class="card-label" style="color:#287018">燥土特徵（對乙木有利）</div>
+        <div class="card-val">向陽・東南向・採光充足<br>通風良好・空氣流通<br>人流旺盛・商業熱度高<br>高地坡地・排水良好</div>
+      </div>
+      <div class="card" style="border-color:#FFAAAA;border-left:3px solid #E05050">
+        <div class="card-label" style="color:#C03030">濕土特徵（對乙木有害）</div>
+        <div class="card-val">北向・地下室・採光差<br>密閉・潮濕・通風差<br>冷清偏僻・人流稀少<br>低窪・近水域・易淹水</div>
+      </div>
+    </div>
+    <div class="rule-box">
+      <div class="rule-title">現場判斷三問（不用懂命理）</div>
+      <div class="rule-body">🌱 農地：踩一下土，是乾的還是濕的？乾→可以，濕→不買<br>🏪 店面：早上10點站門口5分鐘，路過幾個人？熱鬧→可以，冷清→不買<br>🏠 住宅：早上9點去看，陽光照進主臥了嗎？有光→可以，全暗→不買</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">六類不動產詳細評估</div>
+    <div class="re-tier re-best"><div class="re-tier-head">✓✓ 農地（最推薦）</div><div class="re-tier-body"><strong style="color:#287018">適合：</strong>旱田・果園・茶園・坡地農地（芒果、荔枝、龍眼、柑橘最佳）<br><strong style="color:#C03030">迴避：</strong>水田・魚塭・蓮藕田・低窪易淹水農地<br><strong style="color:#4A5060">底線：</strong>平地旱田，確認踩下去土是乾的、有排水溝<br><strong style="color:#4A5060">香蕉：</strong>台南以南坡地可接受，中北部平地不建議（需水量大）</div></div>
+    <div class="re-tier re-ok"><div class="re-tier-head">✓ 店面出租（推薦）</div><div class="re-tier-body"><strong style="color:#1A5FAB">適合：</strong>主幹道臨街・商圈核心・捷運站口・東南向採光好<br><strong style="color:#C03030">迴避：</strong>地下室・北向無採光・冷清巷弄<br><strong style="color:#4A5060">租客加分：</strong>餐飲（火屬）、花店（木屬）最佳；忌租金屬五金行<br><strong style="color:#4A5060">底線：</strong>社區型有固定人流的店面</div></div>
+    <div class="re-tier re-ok"><div class="re-tier-head">✓ 自用住宅（推薦）</div><div class="re-tier-body"><strong style="color:#1A5FAB">最佳：</strong>東南向・南向・中高樓層（5樓以上）・周邊有綠化<br><strong style="color:#A07000">可接受：</strong>西向（下午有陽光）・3–4樓（採光尚可）<br><strong style="color:#C03030">迴避：</strong>北向全暗・地下室・低窪易淹水・緊貼高牆<br><strong style="color:#4A5060">底線：</strong>主臥有自然採光、非北向、非地面層</div></div>
+    <div class="re-tier re-ok"><div class="re-tier-head">✓ 自用店面（推薦）</div><div class="re-tier-body">事業根基，食傷生財直接體現。旺區向陽臨街，人流旺則火氣旺。丙午運旺地店面增值最明顯。</div></div>
+    <div class="re-tier re-caut"><div class="re-tier-head">△ 建地（謹慎）</div><div class="re-tier-body"><strong style="color:#A07000">精華商業區建地：</strong>人氣旺＝燥土，可少量（15%以內）<br><strong style="color:#C03030">偏遠冷清建地：</strong>無人氣＝寒土，迴避<br><strong style="color:#4A5060">注意：</strong>資金鎖定期長，不產生現金流</div></div>
+    <div class="re-tier re-bad"><div class="re-tier-head">✗ 套房出租（不建議）</div><div class="re-tier-body">格局小・採光差・通風不佳＝濕土本質，命格最忌。管理耗神（租客多・維修頻・糾紛多），即使有租金也不建議。套房是「把燥土變濕土」的設計，幾乎沒有例外。</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">不動產買入時機</div>
+    <div class="g3">
+      <div class="card"><div class="card-label">乙巳運尾段 2025–2026</div><div class="card-val">農地・自用住宅優先。用股市獲利固化。不宜大量槓桿買地。</div></div>
+      <div class="card gold"><div class="card-label">丙午運前段 2027–2030 ★</div><div class="card-val">旺區店面（自用或出租）・精華建地。財運最強，可承受較高總價。</div></div>
+      <div class="card"><div class="card-label">丁未運 2037+</div><div class="card-val">守住現有不動產。以租金收息為主。不再擴張買進。</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 6 -->
+<div id="tab6" class="tab-section">
+  <div class="sec">
+    <div class="sec-title">一生財富成長推算（基準：現有約400萬）</div>
+    <div class="w-grid">
+      <div class="w-card"><div class="w-period">現在<br>2025</div><div class="w-amt">400–600萬</div><div class="w-type">鞏固換倉期</div></div>
+      <div class="w-card"><div class="w-period">丙午前段<br>2027–2031</div><div class="w-amt">1,500–3,000萬</div><div class="w-type">事業爆發期</div></div>
+      <div class="w-card peak"><div class="w-period">丙午高峰 ★<br>2032–2036</div><div class="w-amt">3,000–8,000萬</div><div class="w-type">人生最高點</div></div>
+      <div class="w-card"><div class="w-period">丁未運<br>2037+</div><div class="w-amt">5,000萬–1億</div><div class="w-type">複利收息</div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">三種情境對照</div>
+    <table class="it">
+      <tr><th>情境</th><th>丙午運高峰</th><th>關鍵條件</th></tr>
+      <tr><td>保守（70%發揮）</td><td style="color:#B8860B;font-weight:500">2,000–4,000萬</td><td>事業穩定，投資中規中矩</td></tr>
+      <tr><td>基本（100%發揮）</td><td style="color:#B8860B;font-weight:500">4,000–8,000萬</td><td>三線並進，乙巳尾段已佈局</td></tr>
+      <tr><td>積極（充分發揮）</td><td style="color:#D4A017;font-weight:700">8,000萬–1.5億</td><td>事業規模化＋旺區店面增值＋高點出場</td></tr>
+    </table>
+    <div class="logic" style="margin-top:8px"><div class="logic-lbl">三種情境的差異關鍵</div><div class="logic-body">不在運氣，在於：① 2026年前是否完成換倉佈局，② 丙午運是否按命格邏輯（火木為主、遠離金）配置資產。做對了，財富曲線天差地別。</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">丙午運高峰財富結構建議</div>
+    <div class="bar-row"><span class="bar-key">自營事業</span><div class="bar-bg"><div class="bar-fill" style="width:33%;background:#E07040"></div></div><span class="bar-val">30–35%</span></div>
+    <div class="bar-row"><span class="bar-key">股票投資</span><div class="bar-bg"><div class="bar-fill" style="width:28%;background:#2E7DD9"></div></div><span class="bar-val">25–30%</span></div>
+    <div class="bar-row"><span class="bar-key">不動產</span><div class="bar-bg"><div class="bar-fill" style="width:28%;background:#50A830"></div></div><span class="bar-val">25–30%</span></div>
+    <div class="bar-row"><span class="bar-key">現金備用</span><div class="bar-bg"><div class="bar-fill" style="width:12%;background:#9090A0"></div></div><span class="bar-val">10–15%</span></div>
+    <div class="warn" style="margin-top:12px"><div class="warn-lbl">讓財富縮水的三個風險</div><div class="warn-body">① 買進忌神不動產（套房、水田）→ 財耗精力更耗，實際財富不增反減<br>② 丙午運重倉金屬礦業或水屬產業 → 忌神判斷失準，容易追高殺低<br>③ 丁未運（55歲後）仍維持高風險配置 → 守成期進攻，財富容易回吐</div></div>
+  </div>
+</div>
+
+<!-- TAB 7 -->
+<div id="tab7" class="tab-section">
+  <div class="sec">
+    <div class="sec-title">性格分析</div>
+    <div class="char-item"><div class="char-dot" style="background:#D4A017"></div><div><div class="char-title">為什麼現在容易任性</div><div class="char-body">巳亥相沖讓內心有兩股力量拉扯，七殺旺在壓力大時容易反彈爆發，食傷旺讓自我意識強、不喜被約束。任性本質是「沒安全感，所以用掌控來保護自己」。</div></div></div>
+    <div class="char-item"><div class="char-dot" style="background:#50A830"></div><div><div class="char-title">丙午運之後的她</div><div class="char-body">七殺被制，壓力解除，不再需要反彈對抗。根系穩固，財富累積帶來真實安全感，決策從容不迫。那個沉穩從容的她，才是真正的她，不是性格改變，是命局壓力消失了。</div></div></div>
+    <div class="char-item"><div class="char-dot" style="background:#2E7DD9"></div><div><div class="char-title">補火穩定情緒（現在就可做）</div><div class="char-body">紅色橙色配件（紅瑪瑙、石榴石手環）、居家補光充足、辦公位朝南或東南、避免白色銀色配飾（金屬忌神）。改善氣場的實際做法。</div></div></div>
+    <div class="char-item"><div class="char-dot" style="background:#50A830"></div><div><div class="char-title">食傷要有出口</div><div class="char-body">她的「任性」很多時候是創意和自我意識沒有出口。自營事業給她充分發揮空間時，創意有地方去，任性自然減少。壓抑她反而適得其反。</div></div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">貴人分析</div>
+    <div class="card" style="margin-bottom:8px"><div class="card-label">為什麼感覺貴人少</div><div class="card-val">① 巳亥相沖破貴——丁火正印（貴人星）坐亥，亥被巳沖，貴人來了留不住<br>② 七殺旺——容易遇到壓制她的人多過提攜她的人<br>③ 身弱——即使貴人出現，有時也沒能力把握機會</div></div>
+    <div class="g2" style="margin-bottom:8px">
+      <div class="card gold"><div class="card-label">天乙貴人</div><div class="card-val">子（鼠年）・申（猴年）生的人，與她緣分最深，逢凶化吉。</div></div>
+      <div class="card gold"><div class="card-label">文昌貴人</div><div class="card-val">乙木文昌在午。丙午運（2027+）文昌入命，智慧判斷力最強的十年。</div></div>
+    </div>
+    <div class="card"><div class="card-label">對她幫助最深的貴人特質</div><div class="card-val">性別：年長女性、師長型人物（丁火正印）<br>職業：教育・醫療・創意・科技（火木屬）<br>方位：南方來的貴人能量最強<br>生肖：鼠・猴年生最有緣</div></div>
+    <div class="logic" style="margin-top:8px"><div class="logic-lbl">引貴人的根本方法</div><div class="logic-body">她不是沒有貴人，是才華發光後貴人才被吸引過來。丙午運主動曝光、建立口碑——那才是她命格中引貴人最有效的方法。</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">五行補運實用方法</div>
+    <table class="it">
+      <tr><th>類別</th><th>補火木方法</th><th>迴避（金屬忌）</th></tr>
+      <tr><td>配飾</td><td>紅瑪瑙、石榴石、紅玉髓手環；木質吊墜</td><td>純銀飾品、白玉、金屬手環</td></tr>
+      <tr><td>顏色</td><td>紅、橙、紫、深綠（服裝配件居家）</td><td>白色、銀色、金屬灰</td></tr>
+      <tr><td>方位</td><td>辦公桌朝南或東南；睡頭朝東</td><td>北向暗房工作或睡眠</td></tr>
+      <tr><td>植物</td><td>蘭花、桂花（補火）；發財樹、黃金葛（補木）</td><td>仙人掌（金屬形）</td></tr>
+      <tr><td>數字</td><td>喜用：1、2、3（木）、7、8（火）</td><td>忌：4、9（金數）</td></tr>
+      <tr><td>品牌</td><td>名片、Logo用暖色系（紅橙深木色）</td><td>全白、銀灰、冷色調品牌形象</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- TAB 8 -->
+<div id="tab8" class="tab-section">
+  <div class="sec">
+    <div class="sec-title">一生最重要的七件事</div>
+    <div class="kp">
+      <div class="kp-item"><span class="kp-num">01</span>火是一生的核心用神，任何時候都不改變。半導體、AI、能源是她天然的投資主場。任何決策都先問：這件事屬火還是屬金？</div>
+      <div class="kp-item"><span class="kp-num">02</span>命局寒濕過重，水屬產業只能少量波段，套房和水田無論報酬多高都不碰。這是底線，沒有例外。</div>
+      <div class="kp-item"><span class="kp-num">03</span>2026年下半年是換倉關鍵窗口。提前佈局丙午運主題（台積電、AI基礎建設、旺區店面），是財富曲線陡峭的分水嶺。</div>
+      <div class="kp-item"><span class="kp-num">04</span>丙午運（2027–2036）是她一生的財富高峰。要在這十年最大化三條線：自營事業、火屬股票、旺區不動產。三線同時發力。</div>
+      <div class="kp-item"><span class="kp-num">05</span>2033–2035年丙午運後段，開始把股市獲利轉移固化。財旺要固化，不能貪心全留股市，否則財來得快去得也快。</div>
+      <div class="kp-item"><span class="kp-num">06</span>農地選旱田果園（芒果荔枝龍眼），店面選向陽旺區人流旺，住宅選東南向採光好。三個現場判斷法：踩土是乾的、數人流是旺的、看陽光是照進來的。</div>
+      <div class="kp-item"><span class="kp-num">07</span>她不是沒貴人，是才華發光後貴人才來。丙午運主動讓自己被看見，建立口碑，是她一生中貴人緣最旺的十年。</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-title">三大運核心原則速記</div>
+    <div class="g3">
+      <div class="card gold"><div class="card-label">乙巳運（現在）</div><div class="card-val">火木為主<br>水少量波段<br>金完全迴避<br>中長線持有<br>2026準備換倉</div></div>
+      <div class="card blue"><div class="card-label">丙午運（2027）★</div><div class="card-val">火全力押注<br>木穩健配合<br>水壓到最低<br>成長股加碼<br>2033開始固化</div></div>
+      <div class="card"><div class="card-label">丁未運（2037）</div><div class="card-val">ETF取代個股<br>高股息為主<br>租金收息<br>不再擴張<br>保護財富</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  以上依八字命理框架推演，反映命主氣場與運勢結構。<br>
+  不構成任何投資・置產・財務建議。市場風險請自行審慎評估。<br>
+  製作日期：2025年9月
+</div>
+
+</div>
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.tab-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
